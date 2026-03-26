@@ -184,6 +184,9 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .sticky-footer{position:fixed;bottom:0;left:0;right:0;z-index:200;padding:20px 40px;background:rgba(255,255,255,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:space-between;gap:16px}
 .sticky-footer-left{display:flex;gap:8px;align-items:center}
 .sticky-footer-left .btn{font-size:14px;padding:12px 22px;font-weight:600}
+.sticky-footer-center{display:flex;gap:10px;align-items:center}
+.sticky-footer-center label{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--t2);cursor:pointer;font-weight:500}
+.sticky-footer-center input{accent-color:var(--olive);width:14px;height:14px;cursor:pointer}
 .sticky-footer-right{display:flex;gap:10px;align-items:center}
 .sticky-footer-right .btn-accent{font-size:16px;padding:14px 36px;font-weight:700;letter-spacing:-.02em}
 
@@ -298,11 +301,56 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
   <div class="hero-trust">No signup. No watermark. Runs in your browser.</div>
 </section>
 
+<div id="landingContent">
+
 <!-- Ad slot: below hero -->
 <div class="ad-slot">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2273642001833733" data-ad-format="auto" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
+
+<section class="faq">
+  <h2>Simple by design</h2>
+  <div class="faq-item">
+    <h3>Why so few options?</h3>
+    <p>Because you don't need more. We picked the 3 best mockup layouts so you don't have to. Upload, title, export — that's it. No decision fatigue, no tweaking for hours.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is it really free?</h3>
+    <p>Yes. No account, no watermark, no limits. Your screenshots never leave your browser — everything runs locally.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What screenshot sizes does it export?</h3>
+    <p>1290x2796 (6.7" — iPhone 15 Pro Max) and 1242x2688 (6.5" — iPhone 11 Pro Max). Both sizes required by Apple, both generated automatically.</p>
+  </div>
+  <div class="ad-slot" style="padding:10px 0;">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2273642001833733" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <div class="faq-item">
+    <h3>Does it work for Google Play?</h3>
+    <p>Yes. The exported resolutions work for both App Store and Google Play listings.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What formats can I upload?</h3>
+    <p>PNG, JPG, or WebP. Exports are always high-quality PNG, zipped together when you have multiple mockups.</p>
+  </div>
+</section>
+
+<div class="ad-slot" style="padding-bottom:20px;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2273642001833733" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="/privacy.html">Privacy Policy</a>
+    <a href="/terms.html">Terms of Service</a>
+  </div>
+  <p>&copy; 2026 Vitrine. Free App Store mockup generator.</p>
+</footer>
+
+</div><!-- /landingContent -->
 
 <div id="appWrap" style="display:none;">
 <div class="topbar"><h1></h1><div class="topbar-actions" id="topActions"></div></div>
@@ -371,10 +419,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 <div class="phase" id="reviewPhase">
   <h1 class="page-heading">Pick your <em>favorites.</em></h1>
   <div id="reviewContent"></div>
-  <div class="settings-bar" style="margin-top:16px;">
-    <label style="font-size:11px;font-weight:600;color:var(--t3);">Resolutions</label>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;" id="resolutionChecks"></div>
-  </div>
+  <div id="resolutionChecks" style="display:none;"></div>
   <div class="progress-wrap" id="exportProgressWrap">
     <div class="progress-bar"><div class="progress-fill" id="exportProgressFill"></div></div>
     <div class="progress-label" id="exportProgressLabel"></div>
@@ -698,6 +743,7 @@ function showReviewPhase(){
   document.getElementById('exportBtn').style.display='';
   document.getElementById('footerSetup').style.display='none';
   document.getElementById('footerReview').style.display='';
+  document.getElementById('footerResolutions').style.display='';
   document.getElementById('footerProgress').classList.remove('active');
   renderReview();
   renderResolutionChecks();
@@ -711,6 +757,7 @@ function goSetup(){
   document.getElementById('exportBtn').style.display='none';
   document.getElementById('footerSetup').style.display='';
   document.getElementById('footerReview').style.display='none';
+  document.getElementById('footerResolutions').style.display='none';
 }
 
 function renderReview(){
@@ -754,12 +801,14 @@ function toggleSelection(screenIdx,varIdx){
 
 // ─── Resolution checkboxes ───
 function renderResolutionChecks(){
-  document.getElementById('resolutionChecks').innerHTML=EXPORT_RESOLUTIONS.map(r=>
-    `<label style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--t2);cursor:pointer;">
-      <input type="checkbox" ${r.checked?'checked':''} onchange="EXPORT_RESOLUTIONS.find(x=>x.id==='${r.id}').checked=this.checked" style="accent-color:var(--accent);width:14px;height:14px;">
+  const html=EXPORT_RESOLUTIONS.map(r=>
+    `<label>
+      <input type="checkbox" ${r.checked?'checked':''} onchange="EXPORT_RESOLUTIONS.find(x=>x.id==='${r.id}').checked=this.checked">
       ${r.name} (${r.w}&times;${r.h})
     </label>`
   ).join('');
+  document.getElementById('resolutionChecks').innerHTML=html;
+  document.getElementById('footerResolutions').innerHTML=html;
 }
 
 // ─── Render a slide at a specific resolution ───
@@ -927,7 +976,7 @@ function setupDropzone(){
     if(!files.length)return;
     // If we're on the hero page, switch to app
     const hero=document.getElementById('heroSection');
-    if(hero&&hero.style.display!=='none'){hero.style.display='none';document.getElementById('appWrap').style.display='';}
+    if(hero&&hero.style.display!=='none'){hero.style.display='none';document.getElementById('appWrap').style.display='';document.getElementById('landingContent').style.display='none';}
     if(screenEntries.length===1&&!screenEntries[0].image)screenEntries.splice(0,1);
     let loaded=0;
     files.forEach(file=>{
@@ -972,6 +1021,7 @@ document.querySelectorAll('.faq-item').forEach(item=>{
   <div class="sticky-footer-left" id="footerReview" style="display:none;">
     <button class="btn btn-sm" onclick="goSetup()">Back</button>
   </div>
+  <div class="sticky-footer-center" id="footerResolutions" style="display:none;"></div>
   <div class="sticky-footer-right">
     <button class="btn btn-accent" id="generateBtn" onclick="generateAll()">Generate</button>
     <button class="btn btn-accent" id="exportBtn" onclick="exportSelected()" style="display:none;">Export</button>
@@ -980,50 +1030,11 @@ document.querySelectorAll('.faq-item').forEach(item=>{
 
 </div><!-- /appWrap -->
 
-<section class="faq" id="faqSection">
-  <h2>Simple by design</h2>
-  <div class="faq-item">
-    <h3>Why so few options?</h3>
-    <p>Because you don't need more. We picked the 3 best mockup layouts so you don't have to. Upload, title, export — that's it. No decision fatigue, no tweaking for hours.</p>
-  </div>
-  <div class="faq-item">
-    <h3>Is it really free?</h3>
-    <p>Yes. No account, no watermark, no limits. Your screenshots never leave your browser — everything runs locally.</p>
-  </div>
-  <div class="faq-item">
-    <h3>What screenshot sizes does it export?</h3>
-    <p>1290x2796 (6.7" — iPhone 15 Pro Max) and 1242x2688 (6.5" — iPhone 11 Pro Max). Both sizes required by Apple, both generated automatically.</p>
-  </div>
-
-  <!-- Ad slot: mid-FAQ -->
-  <div class="ad-slot" style="padding:10px 0;">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2273642001833733" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-
-  <div class="faq-item">
-    <h3>Does it work for Google Play?</h3>
-    <p>Yes. The exported resolutions work for both App Store and Google Play listings.</p>
-  </div>
-  <div class="faq-item">
-    <h3>What formats can I upload?</h3>
-    <p>PNG, JPG, or WebP. Exports are always high-quality PNG, zipped together when you have multiple mockups.</p>
-  </div>
-</section>
-
-<!-- Ad slot: bottom -->
-<div class="ad-slot" style="padding-bottom:20px;">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2273642001833733" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-
-<footer class="site-footer">
-  <div class="footer-links">
-    <a href="/privacy.html">Privacy Policy</a>
-    <a href="/terms.html">Terms of Service</a>
-  </div>
-  <p>&copy; 2026 Vitrine. Free App Store mockup generator.</p>
-</footer>
+<script>
+// Hide landing content when entering app
+const origCta=document.querySelector('.hero-cta');
+if(origCta){const origClick=origCta.getAttribute('onclick');origCta.setAttribute('onclick',origClick+";document.getElementById('landingContent').style.display='none';");}
+</script>
 
 </body>
 </html>
