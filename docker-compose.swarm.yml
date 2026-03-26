@@ -23,6 +23,7 @@ services:
         order: stop-first
       labels:
         - 'traefik.enable=true'
+        - 'traefik.docker.network=webnet'
         - 'traefik.http.routers.vitrine.rule=Host(`vitrine.gobc.fr`)'
         - 'traefik.http.routers.vitrine.entrypoints=websecure'
         - 'traefik.http.routers.vitrine.tls.certresolver=myresolver'
