@@ -5,7 +5,7 @@ services:
     deploy:
       replicas: 1
       restart_policy:
-        condition: on-failure
+        condition: any
         delay: 5s
         max_attempts: 3
         window: 120s
@@ -21,13 +21,17 @@ services:
         delay: 10s
         failure_action: rollback
         order: stop-first
-      labels:
-        - 'traefik.enable=true'
-        - 'traefik.docker.network=webnet'
-        - 'traefik.http.routers.vitrine.rule=Host(`vitrine.gobc.fr`)'
-        - 'traefik.http.routers.vitrine.entrypoints=websecure'
-        - 'traefik.http.routers.vitrine.tls.certresolver=myresolver'
-        - 'traefik.http.services.vitrine.loadbalancer.server.port=80'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.vitrine-http.rule=Host(`vitrine.gobc.fr`)'
+      - 'traefik.http.routers.vitrine-http.entrypoints=web'
+      - 'traefik.http.routers.vitrine-http.middlewares=redirect-to-https'
+      - 'traefik.http.routers.vitrine.rule=Host(`vitrine.gobc.fr`)'
+      - 'traefik.http.routers.vitrine.entrypoints=websecure'
+      - 'traefik.http.routers.vitrine.tls.certresolver=myresolver'
+      - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'
+      - 'traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true'
+      - 'traefik.http.services.vitrine.loadbalancer.server.port=80'
     networks:
       - webnet
 
