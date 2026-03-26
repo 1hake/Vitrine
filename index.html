@@ -75,79 +75,78 @@
 html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t1);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
 /* ── Top bar ── */
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:60px;background:var(--surface);position:sticky;top:0;z-index:100;border-radius:0 0 var(--r) var(--r)}
-.topbar h1{font-size:18px;font-weight:700;letter-spacing:-.04em;color:var(--olive)}
-.topbar-actions{display:flex;gap:8px;align-items:center}
-.topbar-actions .separator{width:1px;height:24px;background:var(--raised);margin:0 4px}
+.topbar{display:flex;align-items:center;justify-content:flex-end;padding:0 24px;height:56px;position:sticky;top:0;z-index:100;background:var(--bg)}
+.topbar h1{display:none}
+.topbar-actions{display:flex;gap:6px;align-items:center}
 
 /* ── Buttons ── */
 .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border:none;border-radius:var(--pill);background:var(--surface);color:var(--t1);font:500 13px/1 var(--font);cursor:pointer;transition:all var(--tr);white-space:nowrap;user-select:none}
 .btn:hover{background:var(--raised);color:var(--t1)}
 .btn:active{transform:scale(.97);opacity:.85;transition-duration:60ms}
-.btn-accent{background:var(--olive);color:#fff;font-weight:600}
+.btn-accent{background:var(--olive);color:#fff;font-weight:600;padding:10px 24px;font-size:14px}
 .btn-accent:hover{background:#6b7a27}
 .btn-accent:active{transform:scale(.97)}
 .btn-ghost{background:transparent}
-.btn-ghost:hover{background:var(--surface)}
+.btn-ghost:hover{background:var(--raised)}
 .btn-sm{padding:6px 14px;font-size:11px}
-.btn-danger{color:var(--coral);background:rgba(229,77,58,.12)}
-.btn-danger:hover{background:rgba(229,77,58,.2)}
-.btn-lg{padding:12px 28px;font-size:14px;font-weight:600}
+.btn-danger{color:var(--coral);background:rgba(229,77,58,.08)}
+.btn-danger:hover{background:rgba(229,77,58,.15)}
+.btn-lg{padding:14px 32px;font-size:15px;font-weight:600}
 
 /* ── Phases ── */
-.phase{display:none;padding:24px 20px;max-width:1200px;margin:0 auto;overflow-y:auto;height:calc(100vh - 60px);animation:phaseIn .35s ease-out}
+.phase{display:none;padding:0 24px 40px;max-width:100%;margin:0 auto;overflow-y:auto;height:calc(100vh - 56px);animation:phaseIn .4s cubic-bezier(.16,1,.3,1)}
 .phase.active{display:block}
-@keyframes phaseIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes phaseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── Empty state ── */
-.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;text-align:center}
-.empty-state-icon{width:80px;height:80px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;text-align:center;min-height:60vh}
+.empty-state-icon{width:88px;height:88px;border-radius:28px;background:var(--surface);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
 .empty-state-icon svg{width:36px;height:36px;color:var(--olive)}
-.empty-state h2{font-size:26px;font-weight:700;letter-spacing:-.5px;margin-bottom:8px}
-.empty-state p{font-size:14px;color:var(--t2);max-width:400px;line-height:1.5;margin-bottom:28px}
+.empty-state h2{font-size:28px;font-weight:700;letter-spacing:-.5px;margin-bottom:10px}
+.empty-state p{font-size:15px;color:var(--t2);max-width:360px;line-height:1.6;margin-bottom:32px}
 .empty-state-actions{display:flex;gap:12px}
 
 /* ── Settings sections ── */
-.settings-section{margin-bottom:14px;background:var(--surface);border-radius:var(--r);overflow:hidden}
-.settings-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;user-select:none;transition:background var(--tr)}
+.settings-section{margin-bottom:12px;background:var(--surface);border-radius:16px;overflow:hidden}
+.settings-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;user-select:none;transition:background var(--tr)}
 .settings-header:hover{background:var(--raised)}
-.settings-header h3{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--t2)}
-.settings-header .chevron{width:16px;height:16px;color:var(--t3);transition:transform .25s ease}
+.settings-header h3{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t3)}
+.settings-header .chevron{width:14px;height:14px;color:var(--t3);transition:transform .25s ease}
 .settings-header.collapsed .chevron{transform:rotate(-90deg)}
-.settings-body{padding:4px 18px 18px;display:flex;gap:14px;flex-wrap:wrap}
+.settings-body{padding:4px 20px 18px;display:flex;gap:14px;flex-wrap:wrap}
 .settings-body.collapsed{display:none}
 
-.global-settings{display:flex;gap:14px;flex-wrap:wrap}
-.global-settings .field{flex:1;min-width:160px}
-.global-settings label{font-size:10px;font-weight:600;color:var(--t3);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.08em}
-.global-settings input,.global-settings select{width:100%;padding:10px 14px;background:var(--raised);border:none;border-radius:var(--rs);color:var(--t1);font:400 13px var(--font);outline:none;transition:all var(--tr);height:48px}
-.global-settings input:focus,.global-settings select:focus{background:var(--hover)}
+.global-settings{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+.global-settings .field{flex:1;min-width:140px}
+.global-settings label{font-size:10px;font-weight:700;color:var(--t3);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.1em}
+.global-settings input,.global-settings select{width:100%;padding:10px 14px;background:var(--bg);border:none;border-radius:12px;color:var(--t1);font:500 13px var(--font);outline:none;transition:all var(--tr);height:44px}
+.global-settings input:focus,.global-settings select:focus{background:var(--raised)}
 
 /* ── Section title ── */
-.section-title{font-size:26px;font-weight:700;letter-spacing:-.5px;color:var(--t1);margin-bottom:16px;line-height:32px}
-.section-title span{color:var(--t2);font-weight:500;font-size:14px;margin-left:8px}
+.section-title{font-size:20px;font-weight:700;letter-spacing:-.3px;color:var(--t1);margin-bottom:14px;line-height:28px}
+.section-title span{color:var(--t3);font-weight:500;font-size:13px;margin-left:6px}
 
 /* ── Screen cards ── */
-.screen-cards{display:flex;flex-direction:column;gap:14px}
+.screen-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
 
-.screen-card{display:grid;grid-template-columns:140px 1fr auto;gap:18px;padding:18px;background:var(--surface);border-radius:var(--r);align-items:center;transition:all var(--tr)}
-.screen-card:hover{background:var(--raised)}
+.screen-card{display:flex;flex-direction:column;gap:12px;padding:16px;background:var(--surface);border-radius:16px;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.screen-card:hover{transform:translateY(-2px)}
 
-.card-drop{width:140px;height:249px;border:none;border-radius:var(--r);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1);background:var(--raised);overflow:hidden;position:relative;flex-shrink:0}
-.card-drop:hover{background:var(--hover);transform:scale(1.02)}
-.card-drop.drag-over{background:var(--accentA);transform:scale(1.05)}
-.card-drop img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .25s ease}
-.card-drop:hover img{transform:scale(1.03)}
-.card-drop .placeholder{font-size:10px;color:var(--t2);text-align:center;padding:8px}
-.card-drop .placeholder svg{width:28px;height:28px;color:var(--t2);margin-bottom:6px;display:block;margin:0 auto 6px;opacity:.5}
+.card-drop{width:100%;aspect-ratio:9/16;border:none;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);background:var(--bg);overflow:hidden;position:relative}
+.card-drop:hover{background:var(--raised);transform:scale(1.01)}
+.card-drop.drag-over{background:rgba(122,139,45,.08);transform:scale(1.02)}
+.card-drop img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .3s ease}
+.card-drop:hover img{transform:scale(1.02)}
+.card-drop .placeholder{font-size:12px;color:var(--t3);text-align:center;padding:16px}
+.card-drop .placeholder svg{width:32px;height:32px;color:var(--t3);margin-bottom:8px;display:block;margin:0 auto 8px;opacity:.4}
 
-.card-fields{display:flex;flex-direction:column;gap:8px}
-.card-fields input{padding:10px 14px;background:var(--raised);border:none;border-radius:var(--rs);color:var(--t1);font:500 14px var(--font);outline:none;transition:all var(--tr);height:48px}
-.card-fields input:focus{background:var(--hover)}
-.card-fields input::placeholder{color:var(--t2)}
+.card-fields{display:flex;flex-direction:column;gap:6px}
+.card-fields input{padding:10px 14px;background:var(--bg);border:none;border-radius:12px;color:var(--t1);font:500 14px var(--font);outline:none;transition:all var(--tr);height:44px}
+.card-fields input:focus{background:var(--raised)}
+.card-fields input::placeholder{color:var(--t3)}
 
-.card-toggles{display:flex;gap:12px;align-items:center}
-.card-toggle{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--t2);cursor:pointer;transition:color var(--tr);padding:4px 12px;border-radius:var(--pill);background:var(--raised)}
+.card-toggles{display:flex;gap:8px;align-items:center}
+.card-toggle{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);cursor:pointer;transition:color var(--tr);padding:4px 10px;border-radius:var(--pill);background:var(--bg)}
 .card-toggle:hover{color:var(--t1)}
 .card-toggle input{accent-color:var(--olive);width:14px;height:14px;cursor:pointer}
 
@@ -157,38 +156,46 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .card-bg-swatch input[type="color"]::-webkit-color-swatch-wrapper{padding:0}
 .card-bg-swatch input[type="color"]::-webkit-color-swatch{border:none;border-radius:50%}
 
-.card-bg-upload{padding:6px 14px;font-size:11px;border:none;border-radius:var(--pill);background:var(--raised);color:var(--t2);cursor:pointer;transition:all var(--tr)}
-.card-bg-upload:hover{background:var(--hover);color:var(--t1)}
+.card-bg-upload{padding:6px 14px;font-size:11px;border:none;border-radius:var(--pill);background:var(--bg);color:var(--t2);cursor:pointer;transition:all var(--tr)}
+.card-bg-upload:hover{background:var(--raised);color:var(--t1)}
 
-.card-actions{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.card-actions{display:flex;gap:6px;align-items:center;justify-content:space-between}
 
-.add-screen-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:18px;border:none;border-radius:var(--r);background:var(--surface);color:var(--t2);font-size:13px;font-weight:600;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1);margin-top:4px}
-.add-screen-btn:hover{background:var(--raised);color:var(--t1);transform:translateY(-1px)}
+.add-screen-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:20px;border:2px dashed var(--raised);border-radius:16px;background:transparent;color:var(--t3);font-size:13px;font-weight:600;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);margin-top:8px;grid-column:1/-1}
+.add-screen-btn:hover{border-color:var(--olive);color:var(--olive);background:rgba(122,139,45,.04);transform:translateY(-1px)}
 .add-screen-btn:active{transform:scale(.98)}
 
 /* ── Review phase ── */
 .review-screen{margin-bottom:48px}
 .review-screen-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .review-screen-header h3{font-size:20px;font-weight:700;letter-spacing:-.3px;color:var(--t1)}
-.review-screen-header .badge{font-size:12px;color:#fff;padding:6px 18px;border-radius:var(--pill);background:var(--olive);font-weight:600}
+.review-screen-header .badge{font-size:11px;color:#fff;padding:5px 14px;border-radius:var(--pill);background:var(--olive);font-weight:700}
 
-.review-variations{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px}
-.review-variations::-webkit-scrollbar{height:4px}
-.review-variations::-webkit-scrollbar-thumb{background:var(--raised);border-radius:4px}
+.review-variations{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
 
-.review-card{flex-shrink:0;width:260px;border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1);background:var(--surface)}
-.review-card:hover{transform:translateY(-3px);background:var(--raised)}
+.review-card{border-radius:16px;overflow:hidden;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1);background:var(--surface)}
+.review-card:hover{transform:translateY(-3px)}
 .review-card.selected{background:var(--olive)}
-.review-card .preview{width:100%;aspect-ratio:9/19.5;background:var(--raised);overflow:hidden;position:relative;border-radius:var(--r) var(--r) 0 0}
+.review-card .preview{width:100%;aspect-ratio:9/19.5;background:var(--bg);overflow:hidden;position:relative;border-radius:16px 16px 0 0}
 .review-card .preview img{width:100%;height:100%;object-fit:contain;transition:transform .3s ease}
-.review-card:hover .preview img{transform:scale(1.03)}
-.review-card .info{padding:12px 14px;display:flex;align-items:center;justify-content:space-between}
+.review-card:hover .preview img{transform:scale(1.02)}
+.review-card .info{padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
 .review-card .info .name{font-size:12px;font-weight:600;color:var(--t2)}
 .review-card.selected .info .name{color:#fff}
-.review-card .info .check{width:24px;height:24px;border-radius:50%;background:var(--raised);display:flex;align-items:center;justify-content:center;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.review-card .info .check{width:22px;height:22px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:all .25s cubic-bezier(.4,0,.2,1)}
 .review-card.selected .info .check{background:#fff;transform:scale(1.1)}
 .review-card.selected .info .check svg{display:block}
 .review-card .info .check svg{display:none;width:12px;height:12px;color:var(--olive)}
+
+/* ── Responsive ── */
+@media(max-width:600px){
+  .screen-cards{grid-template-columns:1fr}
+  .review-variations{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .hero h1{font-size:36px}
+  .hero-steps{flex-direction:column;align-items:center}
+  .phase{padding:0 16px 32px}
+  .topbar{padding:0 16px}
+}
 
 /* ── Lightbox ── */
 .lightbox{position:fixed;inset:0;background:rgba(28,28,30,.7);backdrop-filter:blur(12px);z-index:3000;display:none;align-items:center;justify-content:center;cursor:zoom-out;animation:lbIn .2s ease}
@@ -223,9 +230,10 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .progress-fill{height:100%;background:var(--olive);border-radius:var(--pill);transition:width .3s;width:0}
 .progress-label{font-size:12px;color:var(--t2);margin-top:8px;text-align:center;font-weight:500}
 
-/* ── Animations for screen cards ── */
-@keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.screen-card{animation:cardIn .25s ease-out}
+/* ── Animations ── */
+@keyframes cardIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.screen-card{animation:cardIn .4s cubic-bezier(.16,1,.3,1) backwards}
+.review-card{animation:cardIn .4s cubic-bezier(.16,1,.3,1) backwards}
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar{width:6px;height:6px}
@@ -537,22 +545,20 @@ function renderScreenCards(){
   countEl.textContent=screenEntries.length+' total';
 
   container.innerHTML=screenEntries.map((s,i)=>`
-    <div class="screen-card">
+    <div class="screen-card" style="animation-delay:${i*60}ms">
       <div class="card-drop" id="drop${i}" onclick="document.getElementById('fileIn${i}').click()" data-idx="${i}">
-        ${s.image?`<img src="${s.image}">`:`<div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m0 0L8 8m4-4l4 4"/><path d="M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>Screen ${i+1}</div>`}
+        ${s.image?`<img src="${s.image}">`:`<div class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m0 0L8 8m4-4l4 4"/><path d="M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>Tap to add</div>`}
         <input type="file" id="fileIn${i}" accept="image/*" hidden onchange="handleScreenFile(${i},this)">
       </div>
       <div class="card-fields">
-        <input type="text" placeholder="Title for screen ${i+1}" value="${esc(s.title)}" oninput="screenEntries[${i}].title=this.value">
-        <input type="text" placeholder="Subtitle (optional)" value="${esc(s.subtitle)}" oninput="screenEntries[${i}].subtitle=this.value">
-        <div class="card-toggles">
-          <label class="card-toggle"><input type="checkbox" ${s.showTitle?'checked':''} onchange="screenEntries[${i}].showTitle=this.checked"> Title</label>
-          <label class="card-toggle"><input type="checkbox" ${s.showSubtitle?'checked':''} onchange="screenEntries[${i}].showSubtitle=this.checked"> Subtitle</label>
-        </div>
+        <input type="text" placeholder="Title" value="${esc(s.title)}" oninput="screenEntries[${i}].title=this.value">
+        <input type="text" placeholder="Subtitle" value="${esc(s.subtitle)}" oninput="screenEntries[${i}].subtitle=this.value">
       </div>
       <div class="card-actions">
-        <button class="btn btn-sm" onclick="moveScreen(${i},-1)" ${i===0?'disabled style="opacity:.3;pointer-events:none;"':''}>&#9650;</button>
-        <button class="btn btn-sm" onclick="moveScreen(${i},1)" ${i===screenEntries.length-1?'disabled style="opacity:.3;pointer-events:none;"':''}>&#9660;</button>
+        <div class="card-toggles">
+          <label class="card-toggle"><input type="checkbox" ${s.showTitle?'checked':''} onchange="screenEntries[${i}].showTitle=this.checked"> Title</label>
+          <label class="card-toggle"><input type="checkbox" ${s.showSubtitle?'checked':''} onchange="screenEntries[${i}].showSubtitle=this.checked"> Sub</label>
+        </div>
         <button class="btn btn-sm btn-danger" onclick="removeScreen(${i})">Remove</button>
       </div>
     </div>
