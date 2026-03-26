@@ -1,6 +1,5 @@
 version: "3.8"
 
-# Production Swarm configuration
 services:
   vitrine:
     image: thegobc/vitrine:latest
@@ -11,35 +10,17 @@ services:
         delay: 5s
         max_attempts: 3
         window: 120s
-      resources:
-        limits:
-          memory: 128M
-          cpus: '0.25'
-        reservations:
-          memory: 64M
-          cpus: '0.1'
-      labels:
-        - 'traefik.enable=true'
-        - 'traefik.http.routers.vitrine-http.rule=Host(`appstoremockup.com`) || Host(`www.appstoremockup.com`)'
-        - 'traefik.http.routers.vitrine-http.entrypoints=web'
-        - 'traefik.http.routers.vitrine-http.middlewares=redirect-to-https'
-        - 'traefik.http.routers.vitrine.rule=Host(`appstoremockup.com`) || Host(`www.appstoremockup.com`)'
-        - 'traefik.http.routers.vitrine.entrypoints=websecure'
-        - 'traefik.http.routers.vitrine.tls.certresolver=myresolver'
-        - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'
-        - 'traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true'
-        - 'traefik.http.services.vitrine.loadbalancer.server.port=80'
     labels:
-      - 'traefik.enable=true'
-      - 'traefik.http.routers.vitrine-http.rule=Host(`appstoremockup.com`) || Host(`www.appstoremockup.com`)'
-      - 'traefik.http.routers.vitrine-http.entrypoints=web'
-      - 'traefik.http.routers.vitrine-http.middlewares=redirect-to-https'
-      - 'traefik.http.routers.vitrine.rule=Host(`appstoremockup.com`) || Host(`www.appstoremockup.com`)'
-      - 'traefik.http.routers.vitrine.entrypoints=websecure'
-      - 'traefik.http.routers.vitrine.tls.certresolver=myresolver'
-      - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'
-      - 'traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true'
-      - 'traefik.http.services.vitrine.loadbalancer.server.port=80'
+      - "traefik.enable=true"
+      - "traefik.http.routers.vitrine-http.rule=Host(`appstoremockup.com`) || Host(`www.appstoremockup.com`)"
+      - "traefik.http.routers.vitrine-http.entrypoints=web"
+      - "traefik.http.routers.vitrine-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.vitrine.rule=Host(`appstoremockup.com`) || Host(`www.appstoremockup.com`)"
+      - "traefik.http.routers.vitrine.entrypoints=websecure"
+      - "traefik.http.routers.vitrine.tls.certresolver=myresolver"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+      - "traefik.http.services.vitrine.loadbalancer.server.port=80"
     networks:
       - webnet
 
