@@ -74,136 +74,119 @@
 }
 html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t1);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-/* ── Top bar ── */
-.topbar{display:flex;align-items:center;justify-content:flex-end;padding:0 24px;height:56px;position:sticky;top:0;z-index:100;background:var(--bg)}
-.topbar h1{display:none}
-.topbar-actions{display:flex;gap:6px;align-items:center}
+/* ── Top bar — hidden ── */
+.topbar{display:none}
 
 /* ── Buttons ── */
-.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border:none;border-radius:var(--pill);background:var(--surface);color:var(--t1);font:500 13px/1 var(--font);cursor:pointer;transition:all var(--tr);white-space:nowrap;user-select:none}
-.btn:hover{background:var(--raised);color:var(--t1)}
-.btn:active{transform:scale(.97);opacity:.85;transition-duration:60ms}
-.btn-accent{background:var(--olive);color:#fff;font-weight:600;padding:10px 24px;font-size:14px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border:none;border-radius:var(--pill);background:var(--surface);color:var(--t1);font:500 13px/1 var(--font);cursor:pointer;transition:background var(--tr),color var(--tr);white-space:nowrap;user-select:none}
+.btn:hover{background:var(--raised)}
+.btn:active{opacity:.8}
+.btn-accent{background:var(--olive);color:#fff;font-weight:600}
 .btn-accent:hover{background:#6b7a27}
-.btn-accent:active{transform:scale(.97)}
 .btn-ghost{background:transparent}
-.btn-ghost:hover{background:var(--raised)}
+.btn-ghost:hover{background:var(--surface)}
 .btn-sm{padding:6px 14px;font-size:11px}
 .btn-danger{color:var(--coral);background:rgba(229,77,58,.08)}
 .btn-danger:hover{background:rgba(229,77,58,.15)}
 .btn-lg{padding:14px 32px;font-size:15px;font-weight:600}
 
 /* ── Phases ── */
-.phase{display:none;padding:0 24px 40px;max-width:100%;margin:0 auto;overflow-y:auto;height:calc(100vh - 56px);animation:phaseIn .4s cubic-bezier(.16,1,.3,1)}
+.phase{display:none;padding:24px 24px 100px;max-width:100%;margin:0 auto;overflow-y:auto;height:100vh;animation:phaseIn .4s cubic-bezier(.16,1,.3,1)}
 .phase.active{display:block}
 @keyframes phaseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── Empty state / Dropzone ── */
-.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;text-align:center;min-height:60vh}
-.empty-state-icon{width:88px;height:88px;border-radius:28px;background:var(--surface);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
-.empty-state-icon svg{width:36px;height:36px;color:var(--olive)}
-.empty-state h2{font-size:28px;font-weight:700;letter-spacing:-.5px;margin-bottom:10px}
-.empty-state p{font-size:15px;color:var(--t2);max-width:360px;line-height:1.6;margin-bottom:32px}
-.empty-state-actions{display:flex;gap:12px}
-
-.dropzone{margin:0 24px 20px;padding:48px 24px;border:2px dashed var(--raised);border-radius:20px;text-align:center;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative}
+/* ── Dropzone ── */
+.dropzone{margin:0 0 20px;padding:40px 24px;border:2px dashed var(--raised);border-radius:16px;text-align:center;cursor:pointer;transition:border-color var(--tr),background var(--tr)}
 .dropzone:hover{border-color:var(--olive);background:rgba(122,139,45,.03)}
-.dropzone.drag-active{border-color:var(--olive);background:rgba(122,139,45,.06);transform:scale(1.01)}
-.dropzone-icon{width:48px;height:48px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
-.dropzone-icon svg{width:22px;height:22px;color:var(--olive)}
-.dropzone h3{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:4px}
-.dropzone p{font-size:13px;color:var(--t3)}
-.dropzone p span{color:var(--olive);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.dropzone.drag-active{border-color:var(--olive);background:rgba(122,139,45,.06)}
+.dropzone-icon{width:44px;height:44px;border-radius:12px;background:var(--surface);display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.dropzone-icon svg{width:20px;height:20px;color:var(--olive)}
+.dropzone h3{font-size:14px;font-weight:700;color:var(--t1);margin-bottom:3px}
+.dropzone p{font-size:12px;color:var(--t3)}
+.dropzone p span{color:var(--olive);font-weight:600}
+.dropzone.compact{padding:20px 24px}
+.dropzone.compact .dropzone-icon{display:none}
+.dropzone.compact h3{font-size:13px}
 
-/* ── Settings sections ── */
-.settings-section{margin-bottom:12px;background:var(--surface);border-radius:16px;overflow:hidden}
-.settings-header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;cursor:pointer;user-select:none;transition:background var(--tr)}
-.settings-header:hover{background:var(--raised)}
-.settings-header h3{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t3)}
-.settings-header .chevron{width:14px;height:14px;color:var(--t3);transition:transform .25s ease}
-.settings-header.collapsed .chevron{transform:rotate(-90deg)}
-.settings-body{padding:4px 20px 18px;display:flex;gap:14px;flex-wrap:wrap}
-.settings-body.collapsed{display:none}
+/* ── Empty state ── */
+.empty-state{display:none}
 
-.global-settings{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
-.global-settings .field{flex:1;min-width:140px}
-.global-settings label{font-size:10px;font-weight:700;color:var(--t3);display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.1em}
-.global-settings input,.global-settings select{width:100%;padding:10px 14px;background:var(--bg);border:none;border-radius:12px;color:var(--t1);font:500 13px var(--font);outline:none;transition:all var(--tr);height:44px}
-.global-settings input:focus,.global-settings select:focus{background:var(--raised)}
+/* ── Settings — inline toolbar ── */
+.settings-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:14px 16px;background:var(--surface);border-radius:14px;margin-bottom:16px}
+.settings-bar .field{display:flex;align-items:center;gap:6px}
+.settings-bar label{font-size:11px;font-weight:600;color:var(--t3);white-space:nowrap}
+.settings-bar select{padding:6px 10px;background:var(--bg);border:none;border-radius:8px;color:var(--t1);font:500 12px var(--font);outline:none;height:32px;cursor:pointer}
+.settings-bar input[type="color"]{width:32px;height:32px;padding:0;border:none;border-radius:50%;background:var(--bg);cursor:pointer;-webkit-appearance:none;appearance:none}
+.settings-bar input[type="color"]::-webkit-color-swatch-wrapper{padding:2px}
+.settings-bar input[type="color"]::-webkit-color-swatch{border:none;border-radius:50%}
+.settings-bar .sep{width:1px;height:20px;background:var(--raised);margin:0 4px}
+.settings-bar .bg-upload-btn{padding:6px 12px;font-size:11px;font-weight:600;border:none;border-radius:8px;background:var(--bg);color:var(--t2);cursor:pointer;transition:background var(--tr)}
+.settings-bar .bg-upload-btn:hover{background:var(--raised)}
 
 /* ── Section title ── */
-.section-title{font-size:20px;font-weight:700;letter-spacing:-.3px;color:var(--t1);margin-bottom:14px;line-height:28px}
-.section-title span{color:var(--t3);font-weight:500;font-size:13px;margin-left:6px}
+.section-title{font-size:16px;font-weight:700;letter-spacing:-.2px;color:var(--t1);margin-bottom:12px}
+.section-title span{color:var(--t3);font-weight:500;font-size:12px;margin-left:6px}
 
 /* ── Screen cards ── */
-.screen-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.screen-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
 
-.screen-card{display:flex;flex-direction:column;gap:12px;padding:16px;background:var(--surface);border-radius:16px;transition:all .25s cubic-bezier(.4,0,.2,1)}
-.screen-card:hover{transform:translateY(-2px)}
+.screen-card{display:flex;flex-direction:column;gap:10px;padding:12px;background:var(--surface);border-radius:14px;transition:background var(--tr)}
+.screen-card:hover{background:var(--surface)}
 
-.card-drop{width:100%;aspect-ratio:9/16;border:none;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);background:var(--bg);overflow:hidden;position:relative}
-.card-drop:hover{background:var(--raised);transform:scale(1.01)}
-.card-drop.drag-over{background:rgba(122,139,45,.08);transform:scale(1.02)}
-.card-drop img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .3s ease}
-.card-drop:hover img{transform:scale(1.02)}
-.card-drop .placeholder{font-size:12px;color:var(--t3);text-align:center;padding:16px}
-.card-drop .placeholder svg{width:32px;height:32px;color:var(--t3);margin-bottom:8px;display:block;margin:0 auto 8px;opacity:.4}
+.card-drop{width:100%;aspect-ratio:9/16;border:none;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--tr);background:var(--bg);overflow:hidden;position:relative}
+.card-drop:hover{background:var(--raised)}
+.card-drop.drag-over{background:rgba(122,139,45,.06)}
+.card-drop img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.card-drop .placeholder{font-size:11px;color:var(--t3);text-align:center;padding:16px}
+.card-drop .placeholder svg{width:28px;height:28px;color:var(--t3);margin-bottom:6px;display:block;margin:0 auto 6px;opacity:.3}
 
-.card-fields{display:flex;flex-direction:column;gap:6px}
-.card-fields input{padding:10px 14px;background:var(--bg);border:none;border-radius:12px;color:var(--t1);font:500 14px var(--font);outline:none;transition:all var(--tr);height:44px}
+.card-fields{display:flex;flex-direction:column;gap:4px}
+.card-fields input{padding:8px 12px;background:var(--bg);border:none;border-radius:10px;color:var(--t1);font:500 13px var(--font);outline:none;transition:background var(--tr);height:38px}
 .card-fields input:focus{background:var(--raised)}
 .card-fields input::placeholder{color:var(--t3)}
 
-.card-toggles{display:flex;gap:8px;align-items:center}
-.card-toggle{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--t2);cursor:pointer;transition:color var(--tr);padding:4px 10px;border-radius:var(--pill);background:var(--bg)}
+.card-toggles{display:flex;gap:6px;align-items:center}
+.card-toggle{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--t3);cursor:pointer;transition:color var(--tr);padding:3px 8px;border-radius:var(--pill);background:var(--bg)}
 .card-toggle:hover{color:var(--t1)}
-.card-toggle input{accent-color:var(--olive);width:14px;height:14px;cursor:pointer}
-
-.card-bg{display:flex;gap:6px;align-items:center}
-.card-bg-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;overflow:hidden;position:relative}
-.card-bg-swatch input[type="color"]{position:absolute;inset:-4px;width:calc(100% + 8px);height:calc(100% + 8px);border:none;cursor:pointer;background:transparent}
-.card-bg-swatch input[type="color"]::-webkit-color-swatch-wrapper{padding:0}
-.card-bg-swatch input[type="color"]::-webkit-color-swatch{border:none;border-radius:50%}
-
-.card-bg-upload{padding:6px 14px;font-size:11px;border:none;border-radius:var(--pill);background:var(--bg);color:var(--t2);cursor:pointer;transition:all var(--tr)}
-.card-bg-upload:hover{background:var(--raised);color:var(--t1)}
+.card-toggle input{accent-color:var(--olive);width:12px;height:12px;cursor:pointer}
 
 .card-actions{display:flex;gap:6px;align-items:center;justify-content:space-between}
 
-.add-screen-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:20px;border:2px dashed var(--raised);border-radius:16px;background:transparent;color:var(--t3);font-size:13px;font-weight:600;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);margin-top:8px;grid-column:1/-1}
-.add-screen-btn:hover{border-color:var(--olive);color:var(--olive);background:rgba(122,139,45,.04);transform:translateY(-1px)}
-.add-screen-btn:active{transform:scale(.98)}
-
 /* ── Review phase ── */
 .review-screen{margin-bottom:48px}
-.review-screen-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.review-screen-header h3{font-size:20px;font-weight:700;letter-spacing:-.3px;color:var(--t1)}
-.review-screen-header .badge{font-size:11px;color:#fff;padding:5px 14px;border-radius:var(--pill);background:var(--olive);font-weight:700}
+.review-screen-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.review-screen-header h3{font-size:16px;font-weight:700;letter-spacing:-.2px;color:var(--t1)}
+.review-screen-header .badge{font-size:11px;color:#fff;padding:4px 12px;border-radius:var(--pill);background:var(--olive);font-weight:700}
 
-.review-variations{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.review-variations{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
 
-.review-card{border-radius:16px;overflow:hidden;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1);background:var(--surface)}
-.review-card:hover{transform:translateY(-3px)}
+.review-card{border-radius:14px;overflow:hidden;cursor:pointer;transition:background var(--tr);background:var(--surface)}
+.review-card:hover{background:var(--raised)}
 .review-card.selected{background:var(--olive)}
-.review-card .preview{width:100%;aspect-ratio:9/19.5;background:var(--bg);overflow:hidden;position:relative;border-radius:16px 16px 0 0}
-.review-card .preview img{width:100%;height:100%;object-fit:contain;transition:transform .3s ease}
-.review-card:hover .preview img{transform:scale(1.02)}
-.review-card .info{padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
-.review-card .info .name{font-size:12px;font-weight:600;color:var(--t2)}
+.review-card .preview{width:100%;aspect-ratio:9/19.5;background:var(--bg);overflow:hidden;position:relative;border-radius:14px 14px 0 0}
+.review-card .preview img{width:100%;height:100%;object-fit:contain}
+.review-card .info{padding:10px 12px;display:flex;align-items:center;justify-content:space-between}
+.review-card .info .name{font-size:11px;font-weight:600;color:var(--t2)}
 .review-card.selected .info .name{color:#fff}
-.review-card .info .check{width:22px;height:22px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:all .25s cubic-bezier(.4,0,.2,1)}
-.review-card.selected .info .check{background:#fff;transform:scale(1.1)}
+.review-card .info .check{width:20px;height:20px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:background var(--tr)}
+.review-card.selected .info .check{background:#fff}
 .review-card.selected .info .check svg{display:block}
-.review-card .info .check svg{display:none;width:12px;height:12px;color:var(--olive)}
+.review-card .info .check svg{display:none;width:10px;height:10px;color:var(--olive)}
+
+/* ── Sticky footer bar ── */
+.sticky-footer{position:fixed;bottom:0;left:0;right:0;z-index:200;padding:12px 24px;background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sticky-footer-left{display:flex;gap:6px;align-items:center}
+.sticky-footer-right{display:flex;gap:8px;align-items:center}
 
 /* ── Responsive ── */
 @media(max-width:600px){
   .screen-cards{grid-template-columns:1fr}
-  .review-variations{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .review-variations{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
   .hero h1{font-size:36px}
   .hero-steps{flex-direction:column;align-items:center}
-  .phase{padding:0 16px 32px}
-  .topbar{padding:0 16px}
+  .phase{padding:16px 16px 100px}
+  .settings-bar{flex-wrap:wrap;gap:6px}
+  .sticky-footer{padding:10px 16px}
 }
 
 /* ── Lightbox ── */
@@ -240,7 +223,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .progress-label{font-size:12px;color:var(--t2);margin-top:8px;text-align:center;font-weight:500}
 
 /* ── Animations ── */
-@keyframes cardIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .screen-card{animation:cardIn .4s cubic-bezier(.16,1,.3,1) backwards}
 .review-card{animation:cardIn .4s cubic-bezier(.16,1,.3,1) backwards}
 
@@ -260,8 +243,8 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .hero-step{display:flex;align-items:center;gap:8px;padding:8px 18px;border-radius:var(--pill);background:var(--surface);font-size:13px;font-weight:600;color:var(--t1)}
 .step-num{width:22px;height:22px;border-radius:50%;background:var(--olive);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .hero-cta{display:inline-flex;align-items:center;gap:8px;padding:16px 48px;border-radius:var(--pill);background:var(--olive);color:#fff;font:700 16px var(--font);cursor:pointer;border:none;transition:all .2s ease;letter-spacing:-.02em}
-.hero-cta:hover{transform:translateY(-2px);background:#6b7a27}
-.hero-cta:active{transform:scale(.97)}
+.hero-cta:hover{background:#6b7a27}
+.hero-cta:active{opacity:.8}
 .hero-trust{margin-top:20px;font-size:12px;color:var(--t3);font-weight:500;letter-spacing:.02em}
 
 /* ── FAQ section ── */
@@ -307,57 +290,42 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 </div>
 
 <div id="appWrap" style="display:none;">
-<div class="topbar">
-  <h1>Vitrine</h1>
-  <div class="topbar-actions" id="topActions">
-    <button class="btn btn-ghost btn-sm" onclick="saveProject()">Save</button>
-    <button class="btn btn-ghost btn-sm" onclick="document.getElementById('loadProjectInput').click()">Load</button>
-    <input type="file" id="loadProjectInput" accept=".json" hidden>
-    <button class="btn btn-accent" id="generateBtn" onclick="generateAll()">Generate</button>
-  </div>
-</div>
+<div class="topbar"><h1></h1><div class="topbar-actions" id="topActions"></div></div>
+<input type="file" id="loadProjectInput" accept=".json" hidden>
 
 <!-- PHASE 1: Setup -->
 <div class="phase active" id="setupPhase">
 
-  <!-- Settings: Style -->
-  <div class="settings-section">
-    <div class="settings-header" onclick="this.classList.toggle('collapsed');this.nextElementSibling.classList.toggle('collapsed')">
-      <h3>Style</h3>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  <!-- Settings bar — inline -->
+  <div class="settings-bar">
+    <div class="field">
+      <label>Bg</label>
+      <input type="color" id="globalBgColor" value="#808080" onchange="globalCfg.bgColor=this.value">
     </div>
-    <div class="settings-body">
-      <div class="global-settings" style="width:100%">
-        <div class="field">
-          <label>Background</label>
-          <div style="display:flex;gap:8px;align-items:center;">
-            <input type="color" id="globalBgColor" value="#808080" onchange="globalCfg.bgColor=this.value" style="width:48px;height:48px;padding:2px;border-radius:50%;border:none;background:var(--raised);cursor:pointer;flex-shrink:0">
-            <button class="btn btn-sm" onclick="document.getElementById('globalBgInput').click()" style="flex:1;">Upload Image</button>
-            <button class="btn btn-sm btn-danger" id="globalBgRemove" onclick="globalCfg.bgImage=null;document.getElementById('globalBgRemove').style.display='none';document.getElementById('globalBgThumb').style.display='none';showToast('Background removed');" style="display:none;">X</button>
-          </div>
-          <input type="file" id="globalBgInput" accept="image/*" hidden>
-          <img id="globalBgThumb" style="display:none;width:100%;height:32px;object-fit:cover;border-radius:var(--rs);margin-top:4px;">
-        </div>
-        <div class="field">
-          <label>Text Color</label>
-          <input type="color" id="globalTitleColor" value="#000000" onchange="globalCfg.textColor=this.value;globalCfg.subtitleColor=this.value;document.getElementById('globalSubColor').value=this.value" style="width:48px;height:48px;padding:2px;border-radius:50%;border:none;background:var(--raised);cursor:pointer">
-          <input type="color" id="globalSubColor" value="#000000" onchange="globalCfg.subtitleColor=this.value" hidden>
-        </div>
-        <div class="field">
-          <label>Font</label>
-          <select id="globalFont" onchange="globalCfg.font=this.value">
-            <option value="'DM Sans', sans-serif">DM Sans</option>
-            <option value="'Playfair Display', serif">Playfair Display</option>
-            <option value="-apple-system, 'SF Pro Display', sans-serif">SF Pro</option>
-          </select>
-        </div>
-      </div>
-      <input type="number" id="globalTitleSize" value="124" onchange="globalCfg.titleSize=+this.value" hidden>
-      <input type="number" id="globalSubSize" value="65" onchange="globalCfg.subtitleSize=+this.value" hidden>
+    <button class="bg-upload-btn" onclick="document.getElementById('globalBgInput').click()">Image</button>
+    <button class="bg-upload-btn btn-danger" id="globalBgRemove" onclick="globalCfg.bgImage=null;this.style.display='none';document.getElementById('globalBgThumb').style.display='none';showToast('Removed');" style="display:none;">X</button>
+    <input type="file" id="globalBgInput" accept="image/*" hidden>
+    <img id="globalBgThumb" style="display:none;width:32px;height:32px;object-fit:cover;border-radius:8px;">
+    <div class="sep"></div>
+    <div class="field">
+      <label>Text</label>
+      <input type="color" id="globalTitleColor" value="#000000" onchange="globalCfg.textColor=this.value;globalCfg.subtitleColor=this.value;document.getElementById('globalSubColor').value=this.value">
+      <input type="color" id="globalSubColor" value="#000000" onchange="globalCfg.subtitleColor=this.value" hidden>
     </div>
+    <div class="sep"></div>
+    <div class="field">
+      <label>Font</label>
+      <select id="globalFont" onchange="globalCfg.font=this.value">
+        <option value="'DM Sans', sans-serif">DM Sans</option>
+        <option value="'Playfair Display', serif">Playfair</option>
+        <option value="-apple-system, 'SF Pro Display', sans-serif">SF Pro</option>
+      </select>
+    </div>
+    <input type="number" id="globalTitleSize" value="124" onchange="globalCfg.titleSize=+this.value" hidden>
+    <input type="number" id="globalSubSize" value="65" onchange="globalCfg.subtitleSize=+this.value" hidden>
   </div>
 
-  <!-- Dropzone (always visible) -->
+  <!-- Dropzone -->
   <div class="dropzone" id="mainDropzone" onclick="document.getElementById('bulkFileInput').click()">
     <div class="dropzone-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 16V4m0 0L8 8m4-4l4 4"/><path d="M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
@@ -367,10 +335,10 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
   </div>
   <input type="file" id="bulkFileInput" accept="image/*" multiple hidden>
 
-  <!-- Empty state (shown when no screens) -->
-  <div class="empty-state" id="emptyState" style="display:none;"></div>
+  <!-- Empty state -->
+  <div class="empty-state" id="emptyState"></div>
 
-  <!-- Screen cards (shown when screens exist) -->
+  <!-- Screen cards -->
   <div id="screenCardsWrap" style="display:none;">
     <div class="section-title">Screens <span id="screenCount"></span></div>
     <div class="screen-cards" id="screenCards"></div>
@@ -384,19 +352,11 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 
 <!-- PHASE 2: Review -->
 <div class="phase" id="reviewPhase">
-  <div class="section-title" style="margin-bottom:24px;">Pick your favorites</div>
+  <div class="section-title" style="margin-bottom:16px;">Pick your favorites</div>
   <div id="reviewContent"></div>
-  <div class="settings-section" style="margin-top:24px;">
-    <div class="settings-header" style="cursor:default;">
-      <h3>Export Resolutions</h3>
-    </div>
-    <div class="settings-body">
-      <div style="display:flex;gap:16px;flex-wrap:wrap;" id="resolutionChecks"></div>
-    </div>
-  </div>
-  <div style="display:flex;gap:12px;margin-top:20px;justify-content:center;">
-    <button class="btn" onclick="goSetup()">Back</button>
-    <button class="btn btn-accent btn-lg" onclick="exportSelected()">Export</button>
+  <div class="settings-bar" style="margin-top:16px;">
+    <label style="font-size:11px;font-weight:600;color:var(--t3);">Resolutions</label>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;" id="resolutionChecks"></div>
   </div>
   <div class="progress-wrap" id="exportProgressWrap">
     <div class="progress-bar"><div class="progress-fill" id="exportProgressFill"></div></div>
@@ -543,11 +503,14 @@ function renderScreenCards(){
   const wrap=document.getElementById('screenCardsWrap');
   const countEl=document.getElementById('screenCount');
 
+  const dz=document.getElementById('mainDropzone');
   if(screenEntries.length===0){
     wrap.style.display='none';
+    if(dz)dz.classList.remove('compact');
     return;
   }
   wrap.style.display='';
+  if(dz)dz.classList.add('compact');
   countEl.textContent=screenEntries.length+' total';
 
   container.innerHTML=screenEntries.map((s,i)=>`
@@ -706,10 +669,12 @@ async function renderSlideToDataUrl(screenEntry,variation,framedImage){
 function showReviewPhase(){
   const setup=document.getElementById('setupPhase'),review=document.getElementById('reviewPhase');
   setup.classList.remove('active');
-  // Force re-trigger animation
   review.style.animation='none';review.offsetHeight;review.style.animation='';
   review.classList.add('active');
   document.getElementById('generateBtn').style.display='none';
+  document.getElementById('exportBtn').style.display='';
+  document.getElementById('footerSetup').style.display='none';
+  document.getElementById('footerReview').style.display='';
   renderReview();
   renderResolutionChecks();
 }
@@ -720,6 +685,9 @@ function goSetup(){
   setup.style.animation='none';setup.offsetHeight;setup.style.animation='';
   setup.classList.add('active');
   document.getElementById('generateBtn').style.display='';
+  document.getElementById('exportBtn').style.display='none';
+  document.getElementById('footerSetup').style.display='';
+  document.getElementById('footerReview').style.display='none';
 }
 
 function renderReview(){
@@ -958,12 +926,34 @@ setupBulkUpload();
 setupProjectLoad();
 setupDropzone();
 renderScreenCards();
+updateFooter();
+
+function updateFooter(){
+  const isReview=document.getElementById('reviewPhase').classList.contains('active');
+  document.getElementById('footerSetup').style.display=isReview?'none':'';
+  document.getElementById('footerReview').style.display=isReview?'':'none';
+}
 
 // FAQ toggle
 document.querySelectorAll('.faq-item').forEach(item=>{
   item.addEventListener('click',()=>item.classList.toggle('open'));
 });
 </script>
+<!-- Sticky footer -->
+<div class="sticky-footer">
+  <div class="sticky-footer-left" id="footerSetup">
+    <button class="btn btn-sm" onclick="saveProject()">Save</button>
+    <button class="btn btn-sm" onclick="document.getElementById('loadProjectInput').click()">Load</button>
+  </div>
+  <div class="sticky-footer-left" id="footerReview" style="display:none;">
+    <button class="btn btn-sm" onclick="goSetup()">Back</button>
+  </div>
+  <div class="sticky-footer-right">
+    <button class="btn btn-accent" id="generateBtn" onclick="generateAll()">Generate</button>
+    <button class="btn btn-accent" id="exportBtn" onclick="exportSelected()" style="display:none;">Export</button>
+  </div>
+</div>
+
 </div><!-- /appWrap -->
 
 <section class="faq" id="faqSection">
