@@ -243,6 +243,17 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .footer-progress.active{display:block}
 .footer-progress-fill{height:100%;background:var(--t1);transition:width .2s;width:0}
 
+/* ── Interstitial overlay ── */
+.interstitial{position:fixed;inset:0;z-index:5000;background:var(--bg);display:none;flex-direction:column;align-items:center;justify-content:center;padding:40px}
+.interstitial.active{display:flex}
+.interstitial-label{font-size:48px;font-weight:700;letter-spacing:-1.5px;color:var(--t1);margin-bottom:8px}
+.interstitial-label em{font-style:normal;color:var(--t3)}
+.interstitial-sub{font-size:14px;color:var(--t2);margin-bottom:32px;font-weight:500}
+.interstitial-progress{width:100%;max-width:400px;height:4px;background:var(--raised);border-radius:var(--pill);overflow:hidden;margin-bottom:40px}
+.interstitial-progress-fill{height:100%;background:var(--t1);border-radius:var(--pill);transition:width .2s;width:0}
+.interstitial-ad{width:100%;max-width:600px;min-height:250px;display:flex;align-items:center;justify-content:center}
+.interstitial-ad ins{display:block}
+
 /* ── No animations on cards ── */
 
 /* ── Scrollbar ── */
@@ -438,6 +449,17 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="this.classList.remove('open')"><img id="lightboxImg" src=""></div>
+
+<!-- Interstitial ad during generation -->
+<div class="interstitial" id="interstitial">
+  <div class="interstitial-label">Generating<em>...</em></div>
+  <div class="interstitial-sub" id="interstitialSub">Preparing your mockups</div>
+  <div class="interstitial-progress"><div class="interstitial-progress-fill" id="interstitialFill"></div></div>
+  <div class="interstitial-ad">
+    <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-2273642001833733" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</div>
 
 <script>
 const BASE_W=1290,BASE_H=2796; // base render resolution
@@ -660,6 +682,7 @@ async function generateAll(){
   const total=valid.length*PRESET_VARIATIONS.length;
   let done=0;
   const pw=document.getElementById('progressWrap');pw.style.display='';
+  document.getElementById('interstitial').classList.add('active');
   generatedResults=[];
 
   for(let si=0;si<screenEntries.length;si++){
@@ -686,6 +709,7 @@ async function generateAll(){
   }
 
   pw.style.display='none';
+  document.getElementById('interstitial').classList.remove('active');
   showReviewPhase();
   showToast(total+' variations generated');
 }
@@ -697,6 +721,8 @@ function updateProgress(done,total,label){
   document.getElementById('footerProgress').classList.add('active');
   document.getElementById('footerProgressFill').style.width=pct;
   document.getElementById('generateBtn').textContent='Generating... '+pct;
+  document.getElementById('interstitialFill').style.width=pct;
+  document.getElementById('interstitialSub').textContent=done+' of '+total+' mockups';
 }
 
 async function renderSlideToDataUrl(screenEntry,variation,framedImage){
