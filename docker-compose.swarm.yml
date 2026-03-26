@@ -23,10 +23,10 @@ services:
         order: stop-first
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.vitrine-http.rule=Host(`vitrine.gobc.fr`)'
+      - 'traefik.http.routers.vitrine-http.rule=Host(`appstoremockup.com`)'
       - 'traefik.http.routers.vitrine-http.entrypoints=web'
       - 'traefik.http.routers.vitrine-http.middlewares=redirect-to-https'
-      - 'traefik.http.routers.vitrine.rule=Host(`vitrine.gobc.fr`)'
+      - 'traefik.http.routers.vitrine.rule=Host(`appstoremockup.com`)'
       - 'traefik.http.routers.vitrine.entrypoints=websecure'
       - 'traefik.http.routers.vitrine.tls.certresolver=myresolver'
       - 'traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https'

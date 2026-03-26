@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vitrine.gobc.fr/sitemap.xml
+Sitemap: https://appstoremockup.com/sitemap.xml
