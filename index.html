@@ -98,13 +98,22 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .phase.active{display:block}
 @keyframes phaseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── Empty state ── */
+/* ── Empty state / Dropzone ── */
 .empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;text-align:center;min-height:60vh}
 .empty-state-icon{width:88px;height:88px;border-radius:28px;background:var(--surface);display:flex;align-items:center;justify-content:center;margin-bottom:24px}
 .empty-state-icon svg{width:36px;height:36px;color:var(--olive)}
 .empty-state h2{font-size:28px;font-weight:700;letter-spacing:-.5px;margin-bottom:10px}
 .empty-state p{font-size:15px;color:var(--t2);max-width:360px;line-height:1.6;margin-bottom:32px}
 .empty-state-actions{display:flex;gap:12px}
+
+.dropzone{margin:0 24px 20px;padding:48px 24px;border:2px dashed var(--raised);border-radius:20px;text-align:center;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);position:relative}
+.dropzone:hover{border-color:var(--olive);background:rgba(122,139,45,.03)}
+.dropzone.drag-active{border-color:var(--olive);background:rgba(122,139,45,.06);transform:scale(1.01)}
+.dropzone-icon{width:48px;height:48px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.dropzone-icon svg{width:22px;height:22px;color:var(--olive)}
+.dropzone h3{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:4px}
+.dropzone p{font-size:13px;color:var(--t3)}
+.dropzone p span{color:var(--olive);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 
 /* ── Settings sections ── */
 .settings-section{margin-bottom:12px;background:var(--surface);border-radius:16px;overflow:hidden}
@@ -348,25 +357,24 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
     </div>
   </div>
 
-  <!-- Empty state (shown when no screens) -->
-  <div class="empty-state" id="emptyState">
-    <div class="empty-state-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m0 0L8 8m4-4l4 4"/><path d="M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+  <!-- Dropzone (always visible) -->
+  <div class="dropzone" id="mainDropzone" onclick="document.getElementById('bulkFileInput').click()">
+    <div class="dropzone-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 16V4m0 0L8 8m4-4l4 4"/><path d="M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
     </div>
-    <h2>Drop your screenshots</h2>
-    <p>That's literally all you need. Add a title, pick a background, and we handle the rest.</p>
-    <div class="empty-state-actions">
-      <button class="btn btn-accent btn-lg" onclick="document.getElementById('bulkFileInput').click()">Upload Screenshots</button>
-    </div>
+    <h3>Drop screenshots here</h3>
+    <p>or <span>browse files</span> — PNG, JPG, WebP</p>
   </div>
+  <input type="file" id="bulkFileInput" accept="image/*" multiple hidden>
+
+  <!-- Empty state (shown when no screens) -->
+  <div class="empty-state" id="emptyState" style="display:none;"></div>
 
   <!-- Screen cards (shown when screens exist) -->
   <div id="screenCardsWrap" style="display:none;">
     <div class="section-title">Screens <span id="screenCount"></span></div>
     <div class="screen-cards" id="screenCards"></div>
-    <div class="add-screen-btn" onclick="document.getElementById('bulkFileInput').click()">+ Add More Screenshots</div>
   </div>
-  <input type="file" id="bulkFileInput" accept="image/*" multiple hidden>
 
   <div class="progress-wrap" id="progressWrap">
     <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
@@ -536,11 +544,9 @@ function renderScreenCards(){
   const countEl=document.getElementById('screenCount');
 
   if(screenEntries.length===0){
-    emptyState.style.display='';
     wrap.style.display='none';
     return;
   }
-  emptyState.style.display='none';
   wrap.style.display='';
   countEl.textContent=screenEntries.length+' total';
 
@@ -897,12 +903,61 @@ function setupProjectLoad(){
 function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
 function showToast(m){const t=document.getElementById('toast');document.getElementById('toastMsg').textContent=m;t.classList.add('show');clearTimeout(t._timer);t._timer=setTimeout(()=>t.classList.remove('show'),2500);}
 
+// ─── Dropzone ───
+function setupDropzone(){
+  const dz=document.getElementById('mainDropzone');
+  if(!dz)return;
+  let dragCounter=0;
+  ['dragenter','dragover','dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();e.stopPropagation();}));
+  dz.addEventListener('dragenter',()=>{dragCounter++;dz.classList.add('drag-active');});
+  dz.addEventListener('dragleave',()=>{dragCounter--;if(dragCounter<=0){dragCounter=0;dz.classList.remove('drag-active');}});
+  dz.addEventListener('drop',e=>{
+    dragCounter=0;dz.classList.remove('drag-active');
+    const files=Array.from(e.dataTransfer.files).filter(f=>f.type.startsWith('image/'));
+    if(!files.length)return;
+    if(screenEntries.length===1&&!screenEntries[0].image)screenEntries.splice(0,1);
+    let loaded=0;
+    files.forEach(file=>{
+      const reader=new FileReader();
+      reader.onload=ev=>{
+        screenEntries.push({image:ev.target.result,title:'',subtitle:'',showTitle:true,showSubtitle:true,fileName:file.name});
+        loaded++;
+        if(loaded===files.length){renderScreenCards();showToast(files.length+' screenshot'+(files.length>1?'s':'')+' added');}
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
+  // Also support full-page drop
+  document.addEventListener('dragover',e=>e.preventDefault());
+  document.addEventListener('drop',e=>{
+    e.preventDefault();
+    const files=Array.from(e.dataTransfer.files).filter(f=>f.type.startsWith('image/'));
+    if(!files.length)return;
+    // If we're on the hero page, switch to app
+    const hero=document.getElementById('heroSection');
+    if(hero&&hero.style.display!=='none'){hero.style.display='none';document.getElementById('appWrap').style.display='';}
+    if(screenEntries.length===1&&!screenEntries[0].image)screenEntries.splice(0,1);
+    let loaded=0;
+    files.forEach(file=>{
+      const reader=new FileReader();
+      reader.onload=ev=>{
+        screenEntries.push({image:ev.target.result,title:'',subtitle:'',showTitle:true,showSubtitle:true,fileName:file.name});
+        loaded++;
+        if(loaded===files.length){renderScreenCards();showToast(files.length+' screenshot'+(files.length>1?'s':'')+' added');}
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+}
+
 // ─── Init ───
 loadTemplates();
 setupGlobalBgUpload();
 setupBulkUpload();
 setupProjectLoad();
-renderScreenCards(); // Show empty state initially
+setupDropzone();
+renderScreenCards();
 
 // FAQ toggle
 document.querySelectorAll('.faq-item').forEach(item=>{
