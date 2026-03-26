@@ -50,4 +50,4 @@ jobs:
           script: |
             cd vitrine
             docker stack deploy -c docker-compose.swarm.yml vitrine-stack
-            docker service update --image thegobc/vitrine:latest --force vitrine-stack_web
+            docker service update --image thegobc/vitrine:latest --force vitrine-stack_vitrine
