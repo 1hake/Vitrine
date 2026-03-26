@@ -1,0 +1,8 @@
+# Local development overrides
+services:
+  web:
+    ports:
+      - "8095:80"
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+      - ./templates:/usr/share/nginx/html/templates
