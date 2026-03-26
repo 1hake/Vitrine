@@ -38,8 +38,8 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY_NOPW }}
-          source: './docker-compose.yml,./docker-compose.swarm.yml'
-          target: '~/vitrine/'
+          source: './docker-compose.swarm.yml'
+          target: './vitrine'
 
       - name: Deploy to Docker Swarm
         uses: appleboy/ssh-action@v1
@@ -48,20 +48,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY_NOPW }}
           script: |
-            set -e
-
             cd vitrine
-
-            # Create webnet if it doesn't exist
-            if ! docker network ls --format "{{.Name}}" | grep -q "^webnet$"; then
-                docker network create --driver overlay --attachable webnet
-            fi
-
-            # Deploy stack
-            docker stack deploy -c docker-compose.yml -c docker-compose.swarm.yml --with-registry-auth vitrine
-
-            # Wait for deployment to process
-            sleep 5
-
-            # Force update with latest image
-            docker service update --image thegobc/vitrine:latest --force --with-registry-auth vitrine_web
+            docker stack deploy -c docker-compose.swarm.yml vitrine-stack
+            docker service update --image thegobc/vitrine:latest --force vitrine-stack_web
