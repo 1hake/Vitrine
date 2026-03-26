@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vitrine — Free App Store Mockup Generator | Create Beautiful Screenshots</title>
-<meta name="description" content="Generate professional App Store and Google Play mockups in seconds. Upload screenshots, add titles, choose 3D or front-facing templates. Free, no signup, no watermark.">
+<title>Vitrine — The Simplest App Store Mockup Generator | Free, No Signup</title>
+<meta name="description" content="The simplest way to create App Store mockups. Upload a screenshot, add a title, export. 3 beautiful layouts, zero complexity. Free, no signup, no watermark.">
 <meta name="keywords" content="app store mockup generator, iphone mockup free, app store screenshot maker, google play mockup, app screenshot template, free mockup tool online">
 <meta name="author" content="Vitrine">
 <link rel="canonical" href="https://appstoremockup.com">
@@ -12,15 +12,15 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://appstoremockup.com">
-<meta property="og:title" content="Vitrine — Free App Store Mockup Generator">
-<meta property="og:description" content="Create stunning App Store & Google Play mockups in seconds. Upload screenshots, pick templates, export at any resolution. Free, no signup required.">
+<meta property="og:title" content="Vitrine — The Simplest App Store Mockup Generator">
+<meta property="og:description" content="Screenshot. Title. Done. The simplest way to create beautiful App Store mockups. Free, no signup.">
 <meta property="og:site_name" content="Vitrine">
 <meta property="og:locale" content="en_US">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Vitrine — Free App Store Mockup Generator">
-<meta name="twitter:description" content="Create stunning App Store & Google Play mockups in seconds. Free, no signup, no watermark.">
+<meta name="twitter:title" content="Vitrine — The Simplest App Store Mockup Generator">
+<meta name="twitter:description" content="Screenshot. Title. Done. 3 layouts, zero complexity. Free forever.">
 
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2273642001833733" crossorigin="anonymous"></script>
@@ -76,8 +76,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 
 /* ── Top bar ── */
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:60px;background:var(--surface);position:sticky;top:0;z-index:100;border-radius:0 0 var(--r) var(--r)}
-.topbar h1{font-size:17px;font-weight:700;letter-spacing:-.03em;color:var(--t1)}
-.topbar h1 span{color:var(--olive);font-weight:700}
+.topbar h1{font-size:18px;font-weight:700;letter-spacing:-.04em;color:var(--olive)}
 .topbar-actions{display:flex;gap:8px;align-items:center}
 .topbar-actions .separator{width:1px;height:24px;background:var(--raised);margin:0 4px}
 
@@ -235,20 +234,18 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 ::selection{background:rgba(197,201,75,.3);color:var(--t1)}
 
 /* ── Hero landing ── */
-.hero{padding:60px 20px 48px;max-width:800px;margin:0 auto;text-align:center}
-.hero h1{font-size:40px;font-weight:700;letter-spacing:-1px;line-height:1.15;margin-bottom:16px;color:var(--t1)}
+.hero{padding:80px 20px 56px;max-width:640px;margin:0 auto;text-align:center}
+.hero-badge{display:inline-block;padding:6px 20px;border-radius:var(--pill);background:var(--surface);color:var(--olive);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:28px}
+.hero h1{font-size:52px;font-weight:700;letter-spacing:-1.5px;line-height:1.08;margin-bottom:20px;color:var(--t1)}
 .hero h1 em{font-style:normal;color:var(--olive)}
-.hero p{font-size:16px;color:var(--t2);line-height:1.6;max-width:520px;margin:0 auto 28px}
-.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
-.hero-pill{padding:6px 18px;border-radius:var(--pill);background:var(--surface);color:var(--t1);font-size:13px;font-weight:600}
-.hero-pill.olive{background:var(--olive);color:var(--bg)}
-.hero-pill.amber{background:var(--amber);color:var(--bg)}
-.hero-pill.coral{background:var(--coral);color:var(--t1)}
-.hero-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;border-radius:var(--pill);background:var(--cream);color:var(--bg);font:700 16px var(--font);cursor:pointer;border:none;transition:all var(--tr)}
-.hero-cta:hover{opacity:.9;transform:translateY(-1px)}
+.hero p{font-size:16px;color:var(--t2);line-height:1.7;max-width:420px;margin:0 auto 36px}
+.hero-steps{display:flex;gap:12px;justify-content:center;margin-bottom:40px}
+.hero-step{display:flex;align-items:center;gap:8px;padding:8px 18px;border-radius:var(--pill);background:var(--surface);font-size:13px;font-weight:600;color:var(--t1)}
+.step-num{width:22px;height:22px;border-radius:50%;background:var(--olive);color:var(--bg);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;padding:16px 48px;border-radius:var(--pill);background:var(--olive);color:var(--bg);font:700 16px var(--font);cursor:pointer;border:none;transition:all .2s ease;letter-spacing:-.02em}
+.hero-cta:hover{transform:translateY(-2px);filter:brightness(1.1)}
 .hero-cta:active{transform:scale(.97)}
-.hero-trust{margin-top:24px;font-size:12px;color:var(--t3);font-weight:500}
-.hero-trust span{color:var(--olive);font-weight:600}
+.hero-trust{margin-top:20px;font-size:12px;color:var(--t3);font-weight:500;letter-spacing:.02em}
 
 /* ── FAQ section ── */
 .faq{max-width:700px;margin:0 auto;padding:48px 20px 60px}
@@ -274,16 +271,16 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 <body>
 
 <section class="hero" id="heroSection">
-  <h1>Create Stunning App Store<br>Mockups in <em>Seconds</em></h1>
-  <p>The free online mockup generator for iOS and Android. Upload your screenshots, pick a device template, add titles — and export pixel-perfect App Store assets. No signup, no watermark.</p>
-  <div class="hero-pills">
-    <span class="hero-pill olive">3D Templates</span>
-    <span class="hero-pill amber">Batch Export</span>
-    <span class="hero-pill coral">Multiple Resolutions</span>
-    <span class="hero-pill">Custom Backgrounds</span>
+  <div class="hero-badge">Free forever</div>
+  <h1>Screenshot.<br><em>Title.</em><br>Done.</h1>
+  <p>The simplest App Store mockup tool. Three layouts, one background, your screenshots. Beautiful results in seconds — no complexity, no learning curve.</p>
+  <div class="hero-steps">
+    <div class="hero-step"><span class="step-num">1</span>Upload your screenshot</div>
+    <div class="hero-step"><span class="step-num">2</span>Add a title</div>
+    <div class="hero-step"><span class="step-num">3</span>Export</div>
   </div>
-  <button class="hero-cta" onclick="document.getElementById('heroSection').style.display='none';document.getElementById('appWrap').style.display='';">Start Creating — It's Free</button>
-  <div class="hero-trust"><span>100% free</span> — No account needed — Works in your browser</div>
+  <button class="hero-cta" onclick="document.getElementById('heroSection').style.display='none';document.getElementById('appWrap').style.display='';">Start Now</button>
+  <div class="hero-trust">No signup. No watermark. Runs in your browser.</div>
 </section>
 
 <!-- Ad slot: below hero -->
@@ -294,90 +291,63 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 
 <div id="appWrap" style="display:none;">
 <div class="topbar">
-  <h1>Mockup <span>Studio</span></h1>
+  <h1>Vitrine</h1>
   <div class="topbar-actions" id="topActions">
     <button class="btn btn-ghost btn-sm" onclick="saveProject()">Save</button>
     <button class="btn btn-ghost btn-sm" onclick="document.getElementById('loadProjectInput').click()">Load</button>
     <input type="file" id="loadProjectInput" accept=".json" hidden>
-    <div class="separator"></div>
-    <button class="btn btn-accent" id="generateBtn" onclick="generateAll()">Generate Variations</button>
+    <button class="btn btn-accent" id="generateBtn" onclick="generateAll()">Generate</button>
   </div>
 </div>
 
 <!-- PHASE 1: Setup -->
 <div class="phase active" id="setupPhase">
 
-  <!-- Settings: Typography -->
+  <!-- Settings: Style -->
   <div class="settings-section">
     <div class="settings-header" onclick="this.classList.toggle('collapsed');this.nextElementSibling.classList.toggle('collapsed')">
-      <h3>Typography</h3>
+      <h3>Style</h3>
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
     </div>
     <div class="settings-body">
       <div class="global-settings" style="width:100%">
+        <div class="field">
+          <label>Background</label>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <input type="color" id="globalBgColor" value="#808080" onchange="globalCfg.bgColor=this.value" style="width:48px;height:48px;padding:2px;border-radius:50%;border:none;background:var(--raised);cursor:pointer;flex-shrink:0">
+            <button class="btn btn-sm" onclick="document.getElementById('globalBgInput').click()" style="flex:1;">Upload Image</button>
+            <button class="btn btn-sm btn-danger" id="globalBgRemove" onclick="globalCfg.bgImage=null;document.getElementById('globalBgRemove').style.display='none';document.getElementById('globalBgThumb').style.display='none';showToast('Background removed');" style="display:none;">X</button>
+          </div>
+          <input type="file" id="globalBgInput" accept="image/*" hidden>
+          <img id="globalBgThumb" style="display:none;width:100%;height:32px;object-fit:cover;border-radius:var(--rs);margin-top:4px;">
+        </div>
+        <div class="field">
+          <label>Text Color</label>
+          <input type="color" id="globalTitleColor" value="#000000" onchange="globalCfg.textColor=this.value;globalCfg.subtitleColor=this.value;document.getElementById('globalSubColor').value=this.value" style="width:48px;height:48px;padding:2px;border-radius:50%;border:none;background:var(--raised);cursor:pointer">
+          <input type="color" id="globalSubColor" value="#000000" onchange="globalCfg.subtitleColor=this.value" hidden>
+        </div>
         <div class="field">
           <label>Font</label>
           <select id="globalFont" onchange="globalCfg.font=this.value">
             <option value="'DM Sans', sans-serif">DM Sans</option>
             <option value="'Playfair Display', serif">Playfair Display</option>
             <option value="-apple-system, 'SF Pro Display', sans-serif">SF Pro</option>
-            <option value="'Georgia', serif">Georgia</option>
           </select>
         </div>
-        <div class="field">
-          <label>Title Size</label>
-          <input type="number" id="globalTitleSize" value="124" min="20" max="300" onchange="globalCfg.titleSize=+this.value">
-        </div>
-        <div class="field">
-          <label>Subtitle Size</label>
-          <input type="number" id="globalSubSize" value="65" min="10" max="200" onchange="globalCfg.subtitleSize=+this.value">
-        </div>
       </div>
-    </div>
-  </div>
-
-  <!-- Settings: Colors & Background -->
-  <div class="settings-section">
-    <div class="settings-header" onclick="this.classList.toggle('collapsed');this.nextElementSibling.classList.toggle('collapsed')">
-      <h3>Colors & Background</h3>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-    </div>
-    <div class="settings-body">
-      <div class="global-settings" style="width:100%">
-        <div class="field">
-          <label>Title Color</label>
-          <input type="color" id="globalTitleColor" value="#000000" onchange="globalCfg.textColor=this.value" style="height:48px;padding:2px;border-radius:var(--rs);border:none;background:var(--raised);cursor:pointer">
-        </div>
-        <div class="field">
-          <label>Subtitle Color</label>
-          <input type="color" id="globalSubColor" value="#000000" onchange="globalCfg.subtitleColor=this.value" style="height:48px;padding:2px;border-radius:var(--rs);border:none;background:var(--raised);cursor:pointer">
-        </div>
-        <div class="field">
-          <label>Background Color</label>
-          <input type="color" id="globalBgColor" value="#808080" onchange="globalCfg.bgColor=this.value" style="height:48px;padding:2px;border-radius:var(--rs);border:none;background:var(--raised);cursor:pointer">
-        </div>
-        <div class="field">
-          <label>Background Image</label>
-          <div style="display:flex;gap:6px;align-items:center;">
-            <button class="btn btn-sm" onclick="document.getElementById('globalBgInput').click()" style="flex:1;">Upload</button>
-            <button class="btn btn-sm btn-danger" id="globalBgRemove" onclick="globalCfg.bgImage=null;document.getElementById('globalBgRemove').style.display='none';document.getElementById('globalBgThumb').style.display='none';showToast('Background removed');" style="display:none;">X</button>
-          </div>
-          <input type="file" id="globalBgInput" accept="image/*" hidden>
-          <img id="globalBgThumb" style="display:none;width:100%;height:32px;object-fit:cover;border-radius:var(--rs);margin-top:4px;">
-        </div>
-      </div>
+      <input type="number" id="globalTitleSize" value="124" onchange="globalCfg.titleSize=+this.value" hidden>
+      <input type="number" id="globalSubSize" value="65" onchange="globalCfg.subtitleSize=+this.value" hidden>
     </div>
   </div>
 
   <!-- Empty state (shown when no screens) -->
   <div class="empty-state" id="emptyState">
     <div class="empty-state-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16V4m0 0L8 8m4-4l4 4"/><path d="M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
     </div>
-    <h2>Create your first mockup</h2>
-    <p>Upload screenshots of your app and we'll generate beautiful App Store mockups in seconds.</p>
+    <h2>Drop your screenshots</h2>
+    <p>That's literally all you need. Add a title, pick a background, and we handle the rest.</p>
     <div class="empty-state-actions">
-      <button class="btn btn-lg" onclick="addScreen()">Add Empty Screen</button>
       <button class="btn btn-accent btn-lg" onclick="document.getElementById('bulkFileInput').click()">Upload Screenshots</button>
     </div>
   </div>
@@ -386,10 +356,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
   <div id="screenCardsWrap" style="display:none;">
     <div class="section-title">Screens <span id="screenCount"></span></div>
     <div class="screen-cards" id="screenCards"></div>
-    <div style="display:flex;gap:8px;">
-      <div class="add-screen-btn" style="flex:1;" onclick="addScreen()">+ Add Empty Screen</div>
-      <div class="add-screen-btn" style="flex:1;" onclick="document.getElementById('bulkFileInput').click()">+ Upload Multiple Screenshots</div>
-    </div>
+    <div class="add-screen-btn" onclick="document.getElementById('bulkFileInput').click()">+ Add More Screenshots</div>
   </div>
   <input type="file" id="bulkFileInput" accept="image/*" multiple hidden>
 
@@ -401,7 +368,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 
 <!-- PHASE 2: Review -->
 <div class="phase" id="reviewPhase">
-  <div class="section-title" style="margin-bottom:24px;">Review Variations</div>
+  <div class="section-title" style="margin-bottom:24px;">Pick your favorites</div>
   <div id="reviewContent"></div>
   <div class="settings-section" style="margin-top:24px;">
     <div class="settings-header" style="cursor:default;">
@@ -412,8 +379,8 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
     </div>
   </div>
   <div style="display:flex;gap:12px;margin-top:20px;justify-content:center;">
-    <button class="btn" onclick="goSetup()">Back to Setup</button>
-    <button class="btn btn-accent btn-lg" onclick="exportSelected()">Export Selected Mockups</button>
+    <button class="btn" onclick="goSetup()">Back</button>
+    <button class="btn btn-accent btn-lg" onclick="exportSelected()">Export</button>
   </div>
   <div class="progress-wrap" id="exportProgressWrap">
     <div class="progress-bar"><div class="progress-fill" id="exportProgressFill"></div></div>
@@ -939,22 +906,18 @@ document.querySelectorAll('.faq-item').forEach(item=>{
 </div><!-- /appWrap -->
 
 <section class="faq" id="faqSection">
-  <h2>Frequently Asked Questions</h2>
+  <h2>Simple by design</h2>
   <div class="faq-item">
-    <h3>What size are App Store screenshots?</h3>
-    <p>Apple requires screenshots at specific resolutions. The most common are 1290x2796px for 6.7" displays (iPhone 15 Pro Max, iPhone 14 Pro Max) and 1242x2688px for 6.5" displays (iPhone 11 Pro Max). Vitrine exports both sizes automatically.</p>
+    <h3>Why so few options?</h3>
+    <p>Because you don't need more. We picked the 3 best mockup layouts so you don't have to. Upload, title, export — that's it. No decision fatigue, no tweaking for hours.</p>
   </div>
   <div class="faq-item">
-    <h3>Is Vitrine really free?</h3>
-    <p>Yes, completely free. No account needed, no watermark on exports, no usage limits. The tool runs entirely in your browser — your screenshots never leave your device.</p>
+    <h3>Is it really free?</h3>
+    <p>Yes. No account, no watermark, no limits. Your screenshots never leave your browser — everything runs locally.</p>
   </div>
   <div class="faq-item">
-    <h3>How do I make iPhone mockups for my app?</h3>
-    <p>Upload your app screenshots, add a title and subtitle for each screen, choose between 3D angle or front-facing device templates, then click Generate. Vitrine creates multiple variations you can review and export as a ZIP.</p>
-  </div>
-  <div class="faq-item">
-    <h3>Can I use custom backgrounds?</h3>
-    <p>Yes. You can set a solid background color or upload a custom background image. Each mockup variation will use your chosen background, creating a cohesive set of App Store screenshots.</p>
+    <h3>What screenshot sizes does it export?</h3>
+    <p>1290x2796 (6.7" — iPhone 15 Pro Max) and 1242x2688 (6.5" — iPhone 11 Pro Max). Both sizes required by Apple, both generated automatically.</p>
   </div>
 
   <!-- Ad slot: mid-FAQ -->
@@ -964,12 +927,12 @@ document.querySelectorAll('.faq-item').forEach(item=>{
   </div>
 
   <div class="faq-item">
-    <h3>Does it work for Google Play screenshots too?</h3>
-    <p>Yes. While the device templates show iPhone frames, the exported images work perfectly for Google Play listings too. The standard resolutions are compatible with both stores.</p>
+    <h3>Does it work for Google Play?</h3>
+    <p>Yes. The exported resolutions work for both App Store and Google Play listings.</p>
   </div>
   <div class="faq-item">
-    <h3>What file formats are supported?</h3>
-    <p>Upload any standard image format (PNG, JPG, WebP). Exports are always high-quality PNG files, packaged in a ZIP when exporting multiple mockups or resolutions.</p>
+    <h3>What formats can I upload?</h3>
+    <p>PNG, JPG, or WebP. Exports are always high-quality PNG, zipped together when you have multiple mockups.</p>
   </div>
 </section>
 
