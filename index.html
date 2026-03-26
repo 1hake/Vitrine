@@ -3,10 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mockup Studio</title>
+<title>Vitrine — Free App Store Mockup Generator | Create Beautiful Screenshots</title>
+<meta name="description" content="Generate professional App Store and Google Play mockups in seconds. Upload screenshots, add titles, choose 3D or front-facing templates. Free, no signup, no watermark.">
+<meta name="keywords" content="app store mockup generator, iphone mockup free, app store screenshot maker, google play mockup, app screenshot template, free mockup tool online">
+<meta name="author" content="Vitrine">
+<link rel="canonical" href="https://vitrine.gobc.fr">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vitrine.gobc.fr">
+<meta property="og:title" content="Vitrine — Free App Store Mockup Generator">
+<meta property="og:description" content="Create stunning App Store & Google Play mockups in seconds. Upload screenshots, pick templates, export at any resolution. Free, no signup required.">
+<meta property="og:site_name" content="Vitrine">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vitrine — Free App Store Mockup Generator">
+<meta name="twitter:description" content="Create stunning App Store & Google Play mockups in seconds. Free, no signup, no watermark.">
+
+<!-- Structured Data: WebApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Vitrine",
+  "url": "https://vitrine.gobc.fr",
+  "description": "Free online App Store and Google Play mockup generator. Upload screenshots, add text, choose device templates, and export high-resolution mockups.",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "3D and front-facing iPhone templates",
+    "Batch screenshot upload",
+    "Custom titles and subtitles",
+    "Multiple export resolutions (6.7 and 6.5 inch)",
+    "Background color and image customization",
+    "ZIP export of all mockups",
+    "No signup required",
+    "No watermark"
+  ],
+  "browserRequirements": "Requires a modern web browser with JavaScript enabled"
+}
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -182,10 +230,50 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--raised);border-radius:var(--pill)}
 ::selection{background:rgba(197,201,75,.3);color:var(--t1)}
+
+/* ── Hero landing ── */
+.hero{padding:60px 20px 48px;max-width:800px;margin:0 auto;text-align:center}
+.hero h1{font-size:40px;font-weight:700;letter-spacing:-1px;line-height:1.15;margin-bottom:16px;color:var(--t1)}
+.hero h1 em{font-style:normal;color:var(--olive)}
+.hero p{font-size:16px;color:var(--t2);line-height:1.6;max-width:520px;margin:0 auto 28px}
+.hero-pills{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.hero-pill{padding:6px 18px;border-radius:var(--pill);background:var(--surface);color:var(--t1);font-size:13px;font-weight:600}
+.hero-pill.olive{background:var(--olive);color:var(--bg)}
+.hero-pill.amber{background:var(--amber);color:var(--bg)}
+.hero-pill.coral{background:var(--coral);color:var(--t1)}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;border-radius:var(--pill);background:var(--cream);color:var(--bg);font:700 16px var(--font);cursor:pointer;border:none;transition:all var(--tr)}
+.hero-cta:hover{opacity:.9;transform:translateY(-1px)}
+.hero-cta:active{transform:scale(.97)}
+.hero-trust{margin-top:24px;font-size:12px;color:var(--t3);font-weight:500}
+.hero-trust span{color:var(--olive);font-weight:600}
+
+/* ── FAQ section ── */
+.faq{max-width:700px;margin:0 auto;padding:48px 20px 60px}
+.faq h2{font-size:26px;font-weight:700;letter-spacing:-.5px;margin-bottom:24px;text-align:center}
+.faq-item{background:var(--surface);border-radius:var(--r);padding:18px;margin-bottom:10px;cursor:pointer;transition:background var(--tr)}
+.faq-item:hover{background:var(--raised)}
+.faq-item h3{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:0;transition:margin .2s}
+.faq-item.open h3{margin-bottom:10px}
+.faq-item p{font-size:13px;color:var(--t2);line-height:1.6;display:none}
+.faq-item.open p{display:block}
 </style>
 </head>
 <body>
 
+<section class="hero" id="heroSection">
+  <h1>Create Stunning App Store<br>Mockups in <em>Seconds</em></h1>
+  <p>The free online mockup generator for iOS and Android. Upload your screenshots, pick a device template, add titles — and export pixel-perfect App Store assets. No signup, no watermark.</p>
+  <div class="hero-pills">
+    <span class="hero-pill olive">3D Templates</span>
+    <span class="hero-pill amber">Batch Export</span>
+    <span class="hero-pill coral">Multiple Resolutions</span>
+    <span class="hero-pill">Custom Backgrounds</span>
+  </div>
+  <button class="hero-cta" onclick="document.getElementById('heroSection').style.display='none';document.getElementById('appWrap').style.display='';">Start Creating — It's Free</button>
+  <div class="hero-trust"><span>100% free</span> — No account needed — Works in your browser</div>
+</section>
+
+<div id="appWrap" style="display:none;">
 <div class="topbar">
   <h1>Mockup <span>Studio</span></h1>
   <div class="topbar-actions" id="topActions">
@@ -823,6 +911,41 @@ setupGlobalBgUpload();
 setupBulkUpload();
 setupProjectLoad();
 renderScreenCards(); // Show empty state initially
+
+// FAQ toggle
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click',()=>item.classList.toggle('open'));
+});
 </script>
+</div><!-- /appWrap -->
+
+<section class="faq" id="faqSection">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq-item">
+    <h3>What size are App Store screenshots?</h3>
+    <p>Apple requires screenshots at specific resolutions. The most common are 1290x2796px for 6.7" displays (iPhone 15 Pro Max, iPhone 14 Pro Max) and 1242x2688px for 6.5" displays (iPhone 11 Pro Max). Vitrine exports both sizes automatically.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is Vitrine really free?</h3>
+    <p>Yes, completely free. No account needed, no watermark on exports, no usage limits. The tool runs entirely in your browser — your screenshots never leave your device.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How do I make iPhone mockups for my app?</h3>
+    <p>Upload your app screenshots, add a title and subtitle for each screen, choose between 3D angle or front-facing device templates, then click Generate. Vitrine creates multiple variations you can review and export as a ZIP.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I use custom backgrounds?</h3>
+    <p>Yes. You can set a solid background color or upload a custom background image. Each mockup variation will use your chosen background, creating a cohesive set of App Store screenshots.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Does it work for Google Play screenshots too?</h3>
+    <p>Yes. While the device templates show iPhone frames, the exported images work perfectly for Google Play listings too. The standard resolutions are compatible with both stores.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What file formats are supported?</h3>
+    <p>Upload any standard image format (PNG, JPG, WebP). Exports are always high-quality PNG files, packaged in a ZIP when exporting multiple mockups or resolutions.</p>
+  </div>
+</section>
+
 </body>
 </html>
