@@ -65,9 +65,9 @@
   --bg:#F5F3EF;--surface:#FFFFFF;--raised:#EDE9E3;--hover:#E4DFD8;
   --border:transparent;--border2:transparent;
   --t1:#1C1C1E;--t2:#6E6E73;--t3:#AEAEB2;
-  --accent:#C5C94B;--accent2:#E2A530;--accentA:rgba(197,201,75,.12);
-  --coral:#E54D3A;--cream:#1C1C1E;--amber:#E2A530;--olive:#7A8B2D;
-  --danger:#E54D3A;--success:#34A853;
+  --accent:#FF4D00;--accent2:#FF8C42;--accentA:rgba(255,77,0,.10);
+  --coral:#D92B0A;--cream:#1C1C1E;--amber:#FF8C42;--olive:#FF4D00;
+  --danger:#D92B0A;--success:#2D9E46;
   --r:20px;--rs:14px;--rl:20px;--pill:100px;
   --font:'DM Sans',-apple-system,sans-serif;
   --tr:180ms cubic-bezier(.4,0,.2,1);
@@ -86,8 +86,8 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .btn-ghost{background:transparent;color:var(--t2)}
 .btn-ghost:hover{background:var(--raised);color:var(--t1)}
 .btn-sm{padding:6px 14px;font-size:11px}
-.btn-danger{color:var(--coral);background:rgba(229,77,58,.08)}
-.btn-danger:hover{background:rgba(229,77,58,.15)}
+.btn-danger{color:var(--coral);background:rgba(217,43,10,.08)}
+.btn-danger:hover{background:rgba(217,43,10,.15)}
 .btn-lg{padding:16px 36px;font-size:15px;font-weight:700}
 
 /* ── Phases ── */
@@ -101,7 +101,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 /* ── Dropzone ── */
 .dropzone{margin:0 0 32px;padding:56px 24px;border:2px dashed var(--raised);border-radius:24px;text-align:center;cursor:pointer;transition:border-color .3s,background .3s}
 .dropzone:hover{border-color:var(--t3)}
-.dropzone.drag-active{border-color:var(--olive);background:rgba(122,139,45,.04)}
+.dropzone.drag-active{border-color:var(--olive);background:rgba(255,77,0,.05)}
 .dropzone-icon{width:56px;height:56px;border-radius:16px;background:var(--raised);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
 .dropzone-icon svg{width:24px;height:24px;color:var(--t2)}
 .dropzone h3{font-size:16px;font-weight:700;color:var(--t1);margin-bottom:4px}
@@ -140,7 +140,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 
 .card-drop{width:80px;min-height:142px;flex-shrink:0;border:none;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--tr);background:var(--bg);overflow:hidden;position:relative}
 .card-drop:hover{background:var(--raised)}
-.card-drop.drag-over{background:rgba(122,139,45,.04)}
+.card-drop.drag-over{background:rgba(255,77,0,.05)}
 .card-drop img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .card-drop .placeholder{font-size:9px;color:var(--t3);text-align:center;padding:8px}
 .card-drop .placeholder svg{width:20px;height:20px;color:var(--t3);margin-bottom:4px;display:block;margin:0 auto 4px;opacity:.25}
@@ -163,7 +163,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .review-screen{margin-bottom:48px}
 .review-screen-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px}
 .review-screen-header h3{font-size:20px;font-weight:700;letter-spacing:-.3px;color:var(--t1)}
-.review-screen-header .badge{font-size:11px;color:var(--olive);padding:4px 12px;border-radius:var(--pill);background:rgba(122,139,45,.1);font-weight:700}
+.review-screen-header .badge{font-size:11px;color:var(--olive);padding:4px 12px;border-radius:var(--pill);background:rgba(255,77,0,.10);font-weight:700}
 
 .review-variations{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
 
@@ -282,7 +282,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--raised);border-radius:var(--pill)}
-::selection{background:rgba(122,139,45,.2);color:var(--t1)}
+::selection{background:rgba(255,77,0,.15);color:var(--t1)}
 
 /* ── Hero landing ── */
 .hero{padding:80px 20px 56px;max-width:640px;margin:0 auto;text-align:center}
