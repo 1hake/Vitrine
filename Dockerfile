@@ -3,6 +3,8 @@ COPY index.html /usr/share/nginx/html/
 COPY privacy.html /usr/share/nginx/html/
 COPY terms.html /usr/share/nginx/html/
 COPY templates/ /usr/share/nginx/html/templates/
+COPY images/ /usr/share/nginx/html/images/
+COPY favicon.svg /usr/share/nginx/html/
 COPY sitemap.xml /usr/share/nginx/html/
 COPY robots.txt /usr/share/nginx/html/
 COPY ads.txt /usr/share/nginx/html/
