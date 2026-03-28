@@ -3,23 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vitrine — The Simplest App Store Mockup Generator | Free, No Signup</title>
+<title>App Store Mockup — The Simplest App Store Mockup Generator | Free, No Signup</title>
 <meta name="description" content="The simplest way to create App Store mockups. Upload a screenshot, add a title, export. 3 beautiful layouts, zero complexity. Free, no signup, no watermark.">
 <meta name="keywords" content="app store mockup generator, iphone mockup free, app store screenshot maker, google play mockup, app screenshot template, free mockup tool online">
-<meta name="author" content="Vitrine">
+<meta name="author" content="App Store Mockup">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="canonical" href="https://appstoremockup.com">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://appstoremockup.com">
-<meta property="og:title" content="Vitrine — The Simplest App Store Mockup Generator">
+<meta property="og:title" content="App Store Mockup — The Simplest App Store Mockup Generator">
 <meta property="og:description" content="Screenshot. Title. Done. The simplest way to create beautiful App Store mockups. Free, no signup.">
-<meta property="og:site_name" content="Vitrine">
+<meta property="og:site_name" content="App Store Mockup">
 <meta property="og:locale" content="en_US">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Vitrine — The Simplest App Store Mockup Generator">
+<meta name="twitter:title" content="App Store Mockup — The Simplest App Store Mockup Generator">
 <meta name="twitter:description" content="Screenshot. Title. Done. 3 layouts, zero complexity. Free forever.">
 
 <!-- Google AdSense -->
@@ -30,7 +31,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Vitrine",
+  "name": "App Store Mockup",
   "url": "https://appstoremockup.com",
   "description": "Free online App Store and Google Play mockup generator. Upload screenshots, add text, choose device templates, and export high-resolution mockups.",
   "applicationCategory": "DesignApplication",
@@ -205,6 +206,8 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
   .settings-bar{gap:6px}
   .settings-bar .field{flex-wrap:wrap}
   .interstitial-label{font-size:32px}
+  .hero-showcase{gap:10px;margin-top:36px}
+  .hero-showcase img{border-radius:12px}
 }
 @media(max-width:480px){
   .phase{padding:20px 16px 180px}
@@ -226,6 +229,8 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
   .interstitial-label{font-size:24px}
   .interstitial-sub{font-size:13px}
   .interstitial{padding:20px}
+  .hero-showcase{gap:6px;margin-top:28px;padding:0 8px}
+  .hero-showcase img{border-radius:8px}
 }
 
 /* ── Lightbox ── */
@@ -285,7 +290,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 ::selection{background:rgba(255,77,0,.15);color:var(--t1)}
 
 /* ── Hero landing ── */
-.hero{padding:80px 20px 56px;max-width:640px;margin:0 auto;text-align:center}
+.hero{padding:80px 20px 56px;max-width:900px;margin:0 auto;text-align:center}
 .hero-badge{display:inline-block;padding:6px 20px;border-radius:var(--pill);background:var(--raised);color:var(--olive);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:28px}
 .hero h1{font-size:52px;font-weight:700;letter-spacing:-1.5px;line-height:1.08;margin-bottom:20px;color:var(--t1)}
 .hero h1 em{font-style:normal;color:var(--t3)}
@@ -297,6 +302,8 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .hero-cta:hover{background:#E04400}
 .hero-cta:active{opacity:.8}
 .hero-trust{margin-top:20px;font-size:12px;color:var(--t3);font-weight:500;letter-spacing:.02em}
+.hero-showcase{display:flex;gap:16px;justify-content:center;align-items:flex-end;margin-top:48px;padding:0 20px}
+.hero-showcase img{width:30%;max-width:280px;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.08)}
 
 /* ── FAQ section ── */
 .faq{max-width:700px;margin:0 auto;padding:48px 20px 60px}
@@ -332,6 +339,11 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
   </div>
   <button class="hero-cta" onclick="document.getElementById('heroSection').style.display='none';document.getElementById('appWrap').style.display='';">Start Now</button>
   <div class="hero-trust">No signup. No watermark. Runs in your browser.</div>
+  <div class="hero-showcase">
+    <img src="images/hero-1.png" alt="App Store mockup with 3D angle">
+    <img src="images/hero-2.png" alt="App Store mockup with top device">
+    <img src="images/hero-3.png" alt="App Store mockup with top title">
+  </div>
 </section>
 
 <div id="landingContent">
@@ -380,7 +392,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
     <a href="/privacy.html">Privacy Policy</a>
     <a href="/terms.html">Terms of Service</a>
   </div>
-  <p>&copy; 2026 Vitrine. Free App Store mockup generator.</p>
+  <p>&copy; 2026 App Store Mockup. Free App Store mockup generator.</p>
 </footer>
 
 </div><!-- /landingContent -->
@@ -1054,10 +1066,6 @@ function updateFooter(){
   document.getElementById('footerReview').style.display=isReview?'':'none';
 }
 
-// FAQ toggle
-document.querySelectorAll('.faq-item').forEach(item=>{
-  item.addEventListener('click',()=>item.classList.toggle('open'));
-});
 </script>
 <!-- Sticky footer -->
 <div class="sticky-footer">
@@ -1082,6 +1090,10 @@ document.querySelectorAll('.faq-item').forEach(item=>{
 // Hide landing content when entering app
 const origCta=document.querySelector('.hero-cta');
 if(origCta){const origClick=origCta.getAttribute('onclick');origCta.setAttribute('onclick',origClick+";document.getElementById('landingContent').style.display='none';");}
+// FAQ toggle
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.addEventListener('click',()=>item.classList.toggle('open'));
+});
 </script>
 
 </body>
