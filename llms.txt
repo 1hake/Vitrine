@@ -1,0 +1,44 @@
+# App Store Mockup
+
+> The simplest free App Store and Google Play mockup generator. Upload a screenshot, add a title, export. No signup, no watermark, runs entirely in your browser.
+
+## What it does
+
+App Store Mockup is a free, browser-based tool that generates professional App Store and Google Play screenshot mockups. Users upload their app screenshots, add titles and subtitles, choose from 3 beautiful layout variations (3D Angle, Top Device, Top Title), customize colors and fonts, and export high-resolution mockups ready for app store submission.
+
+## Key features
+
+- 3 professional mockup layouts: 3D Angle, Top Device, Top Title
+- Multiple export resolutions: iPhone 6.7" (1290x2796), iPhone 6.5" (1242x2688), iPhone 6.1" (1179x2556), Google Play phone (1080x1920), iPad 12.9" (2048x2732), iPad 11" (1668x2388)
+- Custom background colors and images
+- Separate title and subtitle color pickers
+- 9 Google Fonts with live preview: DM Sans, Inter, Poppins, Montserrat, Roboto, Raleway, Playfair Display, Lora, SF Pro
+- Batch screenshot upload — generate mockups for multiple screens at once
+- ZIP export with all selected variations and resolutions
+- App title naming for exported ZIP files
+- 100% client-side — images never leave the browser
+- No signup, no account, no watermark
+- Free forever
+
+## Who it's for
+
+- Indie app developers who need quick, professional App Store screenshots
+- Mobile app designers creating store listing assets
+- Startup teams preparing App Store or Google Play submissions
+- Anyone who needs app mockups without learning Figma or Photoshop
+
+## Comparison to alternatives
+
+Unlike tools like Previewed, AppLaunchpad, or Screenshots Pro, App Store Mockup is:
+- Completely free with no limits or watermarks
+- Requires no account or signup
+- Processes everything locally in the browser (privacy-first)
+- Focuses on simplicity: 3 layouts, not 300 options
+
+## URL
+
+https://appstoremockup.com
+
+## Tech stack
+
+Single-page HTML/CSS/JS application. Uses html2canvas for rendering, JSZip for export bundling. No backend, no frameworks, no dependencies beyond those two libraries.

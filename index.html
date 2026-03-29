@@ -33,25 +33,78 @@
   "@type": "WebApplication",
   "name": "App Store Mockup",
   "url": "https://appstoremockup.com",
-  "description": "Free online App Store and Google Play mockup generator. Upload screenshots, add text, choose device templates, and export high-resolution mockups.",
+  "description": "The simplest free App Store and Google Play mockup generator. Upload a screenshot, add a title, export. 3 beautiful layouts, 6 export resolutions including iPad. No signup, no watermark, 100% browser-based.",
   "applicationCategory": "DesignApplication",
+  "applicationSubCategory": "App Store Screenshot Generator",
   "operatingSystem": "Any",
   "offers": {
     "@type": "Offer",
     "price": "0",
-    "priceCurrency": "USD"
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
   },
   "featureList": [
-    "3D and front-facing iPhone templates",
-    "Batch screenshot upload",
-    "Custom titles and subtitles",
-    "Multiple export resolutions (6.7 and 6.5 inch)",
+    "3 professional mockup layouts: 3D Angle, Top Device, Top Title",
+    "iPhone export: 6.7 inch (1290x2796), 6.5 inch (1242x2688), 6.1 inch (1179x2556)",
+    "Google Play phone export (1080x1920)",
+    "iPad export: 12.9 inch (2048x2732), 11 inch (1668x2388)",
+    "9 Google Fonts with live preview",
+    "Separate title and subtitle color customization",
     "Background color and image customization",
-    "ZIP export of all mockups",
+    "Batch screenshot upload",
+    "ZIP export of all mockups with custom app title naming",
+    "100% client-side — images never leave your browser",
     "No signup required",
-    "No watermark"
+    "No watermark",
+    "Free forever"
   ],
-  "browserRequirements": "Requires a modern web browser with JavaScript enabled"
+  "browserRequirements": "Requires a modern web browser with JavaScript enabled",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "App developers, mobile designers, indie developers, startup teams"
+  },
+  "keywords": "app store mockup, app store screenshot generator, google play mockup, iphone mockup free, ipad mockup, app screenshot maker, free mockup tool, app store listing, play store screenshots"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is App Store Mockup really free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. No account, no watermark, no limits. Your screenshots never leave your browser — everything runs locally."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What screenshot sizes does App Store Mockup export?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "iPhone 6.7 inch (1290x2796), iPhone 6.5 inch (1242x2688), iPhone 6.1 inch (1179x2556), Google Play phone (1080x1920), iPad 12.9 inch (2048x2732), and iPad 11 inch (1668x2388)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does App Store Mockup work for Google Play?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It includes a dedicated Google Play phone resolution (1080x1920) plus iPad sizes for tablet listings. Works for both App Store and Google Play."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What formats can I upload to App Store Mockup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PNG, JPG, or WebP. Exports are always high-quality PNG, zipped together when you have multiple mockups."
+      }
+    }
+  ]
 }
 </script>
 
@@ -59,7 +112,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -206,14 +259,18 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
   .settings-bar{gap:6px}
   .settings-bar .field{flex-wrap:wrap}
   .interstitial-label{font-size:32px}
-  .hero-showcase{gap:10px;margin-top:36px}
+  .hero-showcase{gap:10px;margin:16px 0 24px}
   .hero-showcase img{border-radius:12px}
+  .faq{padding:20px 20px 32px}
+  .faq h2{font-size:22px;margin-bottom:16px}
+  .faq-item{padding:14px;margin-bottom:8px}
 }
 @media(max-width:480px){
   .phase{padding:20px 16px 180px}
   .screen-cards{grid-template-columns:1fr 1fr;gap:8px}
   .hero h1{font-size:36px}
-  .hero-steps{flex-direction:column;align-items:center}
+  .hero-badge{position:static;display:inline-block;margin-bottom:16px}
+  .hero-title-wrap{display:flex;flex-direction:column;align-items:center}
   .page-heading{font-size:28px}
   .sticky-footer{padding:10px 12px;gap:8px}
   .sticky-footer-left .btn{font-size:12px;padding:8px 14px}
@@ -229,7 +286,12 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
   .interstitial-label{font-size:24px}
   .interstitial-sub{font-size:13px}
   .interstitial{padding:20px}
-  .hero-showcase{gap:6px;margin-top:28px;padding:0 8px}
+  .faq{padding:16px 16px 28px}
+  .faq h2{font-size:20px;margin-bottom:12px}
+  .faq-item{padding:12px;margin-bottom:6px}
+  .faq-item h3{font-size:13px}
+  .faq-item p{font-size:12px}
+  .hero-showcase{gap:6px;margin:12px 0 20px;padding:0 8px}
   .hero-showcase img{border-radius:8px}
 }
 
@@ -278,8 +340,29 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 .interstitial-sub{font-size:14px;color:var(--t2);margin-bottom:32px;font-weight:500}
 .interstitial-progress{width:100%;max-width:400px;height:4px;background:var(--raised);border-radius:var(--pill);overflow:hidden;margin-bottom:40px}
 .interstitial-progress-fill{height:100%;background:var(--t1);border-radius:var(--pill);transition:width .2s;width:0}
-.interstitial-ad{width:100%;max-width:600px;min-height:250px;display:flex;align-items:center;justify-content:center}
+.interstitial-ad{width:100%;max-width:600px;min-height:250px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px}
 .interstitial-ad ins{display:block}
+.video-ad-wrap{position:relative;width:100%;max-width:600px;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}
+.video-ad-wrap video{width:100%;height:100%;object-fit:contain;display:block}
+.video-ad-badge{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.7);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:var(--pill);letter-spacing:.03em;text-transform:uppercase;pointer-events:none}
+.video-ad-countdown{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.7);color:#fff;font-size:12px;font-weight:600;padding:4px 12px;border-radius:var(--pill);pointer-events:none}
+.video-ad-skip{position:absolute;bottom:16px;right:16px;background:rgba(0,0,0,.8);color:#fff;font:600 13px var(--font);padding:8px 20px;border-radius:var(--pill);border:1px solid rgba(255,255,255,.3);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s}
+.video-ad-skip.visible{opacity:1;pointer-events:auto}
+.video-ad-skip:hover{background:rgba(255,255,255,.2)}
+.video-ad-cta{position:absolute;bottom:16px;left:16px;background:#FF4D00;color:#fff;font:600 13px var(--font);padding:8px 20px;border-radius:var(--pill);border:none;cursor:pointer;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s}
+.video-ad-cta.visible{opacity:1;pointer-events:auto}
+.video-ad-cta:hover{background:#E04400}
+@media(max-width:600px){.video-ad-wrap{border-radius:8px}}
+
+/* ── Font preview dropdown ── */
+.font-dropdown{position:relative;display:inline-block}
+.font-dropdown-toggle{padding:6px 12px;background:var(--bg);border:none;border-radius:10px;color:var(--t1);font:600 12px var(--font);cursor:pointer;height:36px;display:flex;align-items:center;gap:6px;min-width:120px}
+.font-dropdown-toggle::after{content:'';border:4px solid transparent;border-top:5px solid var(--t2);margin-left:auto}
+.font-dropdown-menu{position:absolute;top:100%;left:0;margin-top:4px;background:var(--surface);border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.12);z-index:500;min-width:180px;max-height:280px;overflow-y:auto;display:none;padding:4px}
+.font-dropdown-menu.open{display:block}
+.font-dropdown-item{padding:8px 12px;border-radius:8px;cursor:pointer;font-size:14px;transition:background var(--tr);white-space:nowrap}
+.font-dropdown-item:hover{background:var(--bg)}
+.font-dropdown-item.active{background:var(--accentA);color:var(--accent)}
 
 /* ── No animations on cards ── */
 
@@ -290,23 +373,21 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 ::selection{background:rgba(255,77,0,.15);color:var(--t1)}
 
 /* ── Hero landing ── */
-.hero{padding:80px 20px 56px;max-width:900px;margin:0 auto;text-align:center}
-.hero-badge{display:inline-block;padding:6px 20px;border-radius:var(--pill);background:var(--raised);color:var(--olive);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:28px}
+.hero{padding:48px 20px 56px;max-width:900px;margin:0 auto;text-align:center}
+.hero-title-wrap{position:relative;display:inline-block}
+.hero-badge{position:absolute;right:-90px;top:-14px;padding:6px 16px;border-radius:var(--pill);background:var(--raised);color:var(--olive);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;transform:rotate(14deg)}
 .hero h1{font-size:52px;font-weight:700;letter-spacing:-1.5px;line-height:1.08;margin-bottom:20px;color:var(--t1)}
 .hero h1 em{font-style:normal;color:var(--t3)}
-.hero p{font-size:16px;color:var(--t2);line-height:1.7;max-width:420px;margin:0 auto 36px}
-.hero-steps{display:flex;gap:12px;justify-content:center;margin-bottom:40px}
-.hero-step{display:flex;align-items:center;gap:8px;padding:8px 18px;border-radius:var(--pill);background:var(--surface);font-size:13px;font-weight:600;color:var(--t1)}
-.step-num{width:22px;height:22px;border-radius:50%;background:var(--olive);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hero p{font-size:15px;color:var(--t2);line-height:1.6;max-width:420px;margin:0 auto 8px}
 .hero-cta{display:inline-flex;align-items:center;gap:8px;padding:16px 48px;border-radius:var(--pill);background:#FF4D00;color:#fff;font:700 16px var(--font);cursor:pointer;border:none;transition:all .2s ease;letter-spacing:-.02em}
 .hero-cta:hover{background:#E04400}
 .hero-cta:active{opacity:.8}
 .hero-trust{margin-top:20px;font-size:12px;color:var(--t3);font-weight:500;letter-spacing:.02em}
-.hero-showcase{display:flex;gap:16px;justify-content:center;align-items:flex-end;margin-top:48px;padding:0 20px}
-.hero-showcase img{width:30%;max-width:280px;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.hero-showcase{display:flex;gap:16px;justify-content:center;align-items:flex-end;margin:24px 0 32px;padding:0 20px}
+.hero-showcase img{width:22%;max-width:200px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.08)}
 
 /* ── FAQ section ── */
-.faq{max-width:700px;margin:0 auto;padding:48px 20px 60px}
+.faq{max-width:700px;margin:0 auto;padding:32px 20px 40px}
 .faq h2{font-size:26px;font-weight:700;letter-spacing:-.5px;margin-bottom:24px;text-align:center}
 .faq-item{background:var(--surface);border-radius:var(--r);padding:18px;margin-bottom:10px;cursor:pointer;transition:background var(--tr)}
 .faq-item:hover{background:var(--raised)}
@@ -329,21 +410,18 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
 <body>
 
 <section class="hero" id="heroSection">
-  <div class="hero-badge">Free forever</div>
-  <h1>Screenshot.<br><em>Title.</em><br>Done.</h1>
-  <p>The simplest App Store mockup tool. Three layouts, one background, your screenshots. Beautiful results in seconds — no complexity, no learning curve.</p>
-  <div class="hero-steps">
-    <div class="hero-step"><span class="step-num">1</span>Upload your screenshot</div>
-    <div class="hero-step"><span class="step-num">2</span>Add a title</div>
-    <div class="hero-step"><span class="step-num">3</span>Export</div>
+  <div class="hero-title-wrap">
+    <h1>App Store<br><em style="color:var(--accent)">Mockup.</em></h1>
+    <div class="hero-badge">Free forever</div>
   </div>
-  <button class="hero-cta" onclick="document.getElementById('heroSection').style.display='none';document.getElementById('appWrap').style.display='';">Start Now</button>
-  <div class="hero-trust">No signup. No watermark. Runs in your browser.</div>
+  <p>The simplest App Store mockup tool. Beautiful results in seconds — no signup, no watermark.</p>
   <div class="hero-showcase">
     <img src="images/hero-1.png" alt="App Store mockup with 3D angle">
     <img src="images/hero-2.png" alt="App Store mockup with top device">
     <img src="images/hero-3.png" alt="App Store mockup with top title">
   </div>
+  <button class="hero-cta" onclick="document.getElementById('heroSection').style.display='none';document.getElementById('appWrap').style.display='';">Start Now</button>
+  <div class="hero-trust">Free forever. Runs in your browser.</div>
 </section>
 
 <div id="landingContent">
@@ -366,21 +444,22 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
   </div>
   <div class="faq-item">
     <h3>What screenshot sizes does it export?</h3>
-    <p>1290x2796 (6.7" — iPhone 15 Pro Max) and 1242x2688 (6.5" — iPhone 11 Pro Max). Both sizes required by Apple, both generated automatically.</p>
-  </div>
-  <div class="ad-slot" style="padding:10px 0;">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2273642001833733" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <p>iPhone 6.7" (1290x2796), iPhone 6.5" (1242x2688), iPhone 6.1" (1179x2556), Google Play phone (1080x1920), iPad 12.9" (2048x2732), and iPad 11" (1668x2388). Pick the ones you need — all generated automatically.</p>
   </div>
   <div class="faq-item">
     <h3>Does it work for Google Play?</h3>
-    <p>Yes. The exported resolutions work for both App Store and Google Play listings.</p>
+    <p>Yes. We include a dedicated Google Play phone resolution (1080x1920) plus iPad sizes for tablet listings. Works for both App Store and Google Play.</p>
   </div>
   <div class="faq-item">
     <h3>What formats can I upload?</h3>
     <p>PNG, JPG, or WebP. Exports are always high-quality PNG, zipped together when you have multiple mockups.</p>
   </div>
 </section>
+
+<div class="ad-slot" style="padding:0 20px 20px;">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2273642001833733" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
 
 <div class="ad-slot" style="padding-bottom:20px;">
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2273642001833733" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -409,7 +488,7 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
   <!-- Settings bar — inline -->
   <div class="settings-bar">
     <div class="field">
-      <label>Bg</label>
+      <label>Background</label>
       <input type="color" id="globalBgColor" value="#808080" onchange="globalCfg.bgColor=this.value">
     </div>
     <button class="bg-upload-btn" onclick="document.getElementById('globalBgInput').click()">Image</button>
@@ -418,18 +497,25 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
     <img id="globalBgThumb" style="display:none;width:32px;height:32px;object-fit:cover;border-radius:8px;">
     <div class="sep"></div>
     <div class="field">
-      <label>Text</label>
-      <input type="color" id="globalTitleColor" value="#000000" onchange="globalCfg.textColor=this.value;globalCfg.subtitleColor=this.value;document.getElementById('globalSubColor').value=this.value">
-      <input type="color" id="globalSubColor" value="#000000" onchange="globalCfg.subtitleColor=this.value" hidden>
+      <label>Title</label>
+      <input type="color" id="globalTitleColor" value="#000000" onchange="globalCfg.textColor=this.value">
+    </div>
+    <div class="field">
+      <label>Subtitle</label>
+      <input type="color" id="globalSubColor" value="#000000" onchange="globalCfg.subtitleColor=this.value">
     </div>
     <div class="sep"></div>
     <div class="field">
       <label>Font</label>
-      <select id="globalFont" onchange="globalCfg.font=this.value">
-        <option value="'DM Sans', sans-serif">DM Sans</option>
-        <option value="'Playfair Display', serif">Playfair</option>
-        <option value="-apple-system, 'SF Pro Display', sans-serif">SF Pro</option>
-      </select>
+      <div class="font-dropdown" id="fontDropdown">
+        <button class="font-dropdown-toggle" id="fontDropdownToggle" type="button">DM Sans</button>
+        <div class="font-dropdown-menu" id="fontDropdownMenu"></div>
+      </div>
+    </div>
+    <div class="sep"></div>
+    <div class="field">
+      <label>App Title</label>
+      <input type="text" id="appTitleInput" placeholder="My App" style="padding:6px 10px;background:var(--bg);border:none;border-radius:10px;color:var(--t1);font:600 12px var(--font);outline:none;height:36px;width:120px;">
     </div>
     <input type="number" id="globalTitleSize" value="124" onchange="globalCfg.titleSize=+this.value" hidden>
     <input type="number" id="globalSubSize" value="65" onchange="globalCfg.subtitleSize=+this.value" hidden>
@@ -490,8 +576,19 @@ html,body{height:100%;font-family:var(--font);background:var(--bg);color:var(--t
   <div class="interstitial-sub" id="interstitialSub">Preparing your mockups</div>
   <div class="interstitial-progress"><div class="interstitial-progress-fill" id="interstitialFill"></div></div>
   <div class="interstitial-ad">
-    <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-2273642001833733" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <!-- Video ad player -->
+    <div class="video-ad-wrap" id="videoAdWrap" style="display:none">
+      <video id="videoAd" playsinline muted></video>
+      <div class="video-ad-badge">Ad</div>
+      <div class="video-ad-countdown" id="videoAdCountdown"></div>
+      <a class="video-ad-cta" id="videoAdCta" href="#" target="_blank" rel="noopener noreferrer">Learn More</a>
+      <button class="video-ad-skip" id="videoAdSkip">Skip Ad</button>
+    </div>
+    <!-- Fallback: AdSense banner if no video ad -->
+    <div id="bannerAdFallback">
+      <ins class="adsbygoogle" style="display:block;width:100%;min-height:250px" data-ad-client="ca-pub-2273642001833733" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
   </div>
 </div>
 
@@ -500,8 +597,12 @@ const BASE_W=1290,BASE_H=2796; // base render resolution
 const BASE_DW=0.58,BASE_DH=0.58;
 
 const EXPORT_RESOLUTIONS=[
-  {id:'6.7',name:'6.7" Display',w:1290,h:2796,checked:true},
-  {id:'6.5',name:'6.5" Display',w:1242,h:2688,checked:true},
+  {id:'6.7',name:'6.7" iPhone',w:1290,h:2796,checked:true},
+  {id:'6.5',name:'6.5" iPhone',w:1242,h:2688,checked:true},
+  {id:'6.1',name:'6.1" iPhone',w:1179,h:2556,checked:false},
+  {id:'gp',name:'Google Play Phone',w:1080,h:1920,checked:false},
+  {id:'ipad-13',name:'iPad 12.9"',w:2048,h:2732,checked:false},
+  {id:'ipad-11',name:'iPad 11"',w:1668,h:2388,checked:false},
 ];
 
 const BUNDLED_TEMPLATES=[
@@ -523,6 +624,19 @@ let globalCfg={
   textColor:'#000000',subtitleColor:'#000000',
   bgColor:'#808080',bgImage:null,
 };
+
+// Font options
+const FONT_OPTIONS=[
+  {value:"'DM Sans', sans-serif",label:'DM Sans',family:'DM Sans'},
+  {value:"'Inter', sans-serif",label:'Inter',family:'Inter'},
+  {value:"'Poppins', sans-serif",label:'Poppins',family:'Poppins'},
+  {value:"'Montserrat', sans-serif",label:'Montserrat',family:'Montserrat'},
+  {value:"'Roboto', sans-serif",label:'Roboto',family:'Roboto'},
+  {value:"'Raleway', sans-serif",label:'Raleway',family:'Raleway'},
+  {value:"'Playfair Display', serif",label:'Playfair Display',family:'Playfair Display'},
+  {value:"'Lora', serif",label:'Lora',family:'Lora'},
+  {value:"-apple-system, 'SF Pro Display', sans-serif",label:'SF Pro',family:'-apple-system'},
+];
 
 // Screens: [{image,title,subtitle,showTitle,showSubtitle,bgColor,bgImage,fileName}]
 let screenEntries=[];
@@ -719,6 +833,9 @@ async function generateAll(){
   document.getElementById('interstitial').classList.add('active');
   generatedResults=[];
 
+  // Start video ad in parallel with generation
+  const videoAdPromise=startVideoAd();
+
   for(let si=0;si<screenEntries.length;si++){
     const s=screenEntries[si];
     if(!s.image)continue;
@@ -742,6 +859,9 @@ async function generateAll(){
     }
   }
 
+  // Wait for video ad to finish (skip or end) before dismissing
+  await videoAdPromise;
+
   pw.style.display='none';
   document.getElementById('interstitial').classList.remove('active');
   showReviewPhase();
@@ -757,6 +877,92 @@ function updateProgress(done,total,label){
   document.getElementById('generateBtn').textContent='Generating... '+pct;
   document.getElementById('interstitialFill').style.width=pct;
   document.getElementById('interstitialSub').textContent=done+' of '+total+' mockups';
+}
+
+/* ── Video Ad System ── */
+// Configure your video ads here. Each entry needs a video URL, optional click-through link, and CTA text.
+// To add your own ads: host an mp4 and add an entry below.
+// To integrate a video ad network (e.g. Google IMA SDK), replace the loadVideoAd() function.
+const VIDEO_ADS=[
+  // Example entry — replace with your real ad:
+  // {src:'https://yourcdn.com/ad-video.mp4', link:'https://advertiser.com', cta:'Learn More', skipAfter:5}
+];
+
+const VIDEO_AD_SKIP_AFTER=5; // seconds before skip button appears (default)
+
+function pickVideoAd(){
+  if(!VIDEO_ADS.length)return null;
+  return VIDEO_ADS[Math.floor(Math.random()*VIDEO_ADS.length)];
+}
+
+let videoAdResolve=null;
+let videoAdInterval=null;
+
+function startVideoAd(){
+  const ad=pickVideoAd();
+  const wrap=document.getElementById('videoAdWrap');
+  const fallback=document.getElementById('bannerAdFallback');
+  if(!ad){wrap.style.display='none';fallback.style.display='';return Promise.resolve();}
+
+  // Show video, hide banner
+  wrap.style.display='';
+  fallback.style.display='none';
+
+  const video=document.getElementById('videoAd');
+  const countdown=document.getElementById('videoAdCountdown');
+  const skipBtn=document.getElementById('videoAdSkip');
+  const ctaBtn=document.getElementById('videoAdCta');
+
+  video.src=ad.src;
+  video.currentTime=0;
+  video.muted=true;
+  skipBtn.classList.remove('visible');
+
+  if(ad.link){
+    ctaBtn.href=ad.link;
+    ctaBtn.textContent=ad.cta||'Learn More';
+    ctaBtn.classList.add('visible');
+  } else {
+    ctaBtn.classList.remove('visible');
+  }
+
+  const skipAfter=ad.skipAfter||VIDEO_AD_SKIP_AFTER;
+
+  return new Promise(resolve=>{
+    videoAdResolve=resolve;
+
+    video.play().catch(()=>{});
+
+    // Try unmuting after user gesture (autoplay policy)
+    const tryUnmute=()=>{video.muted=false;document.removeEventListener('click',tryUnmute);};
+    document.addEventListener('click',tryUnmute,{once:true});
+
+    videoAdInterval=setInterval(()=>{
+      const elapsed=Math.floor(video.currentTime);
+      const remaining=Math.max(0,skipAfter-elapsed);
+      if(remaining>0){
+        countdown.textContent='Skip in '+remaining+'s';
+      } else {
+        countdown.textContent='';
+        skipBtn.classList.add('visible');
+      }
+    },250);
+
+    skipBtn.onclick=()=>endVideoAd();
+    video.onended=()=>endVideoAd();
+  });
+}
+
+function endVideoAd(){
+  clearInterval(videoAdInterval);
+  const video=document.getElementById('videoAd');
+  video.pause();
+  video.src='';
+  document.getElementById('videoAdSkip').classList.remove('visible');
+  document.getElementById('videoAdCta').classList.remove('visible');
+  document.getElementById('videoAdWrap').style.display='none';
+  document.getElementById('bannerAdFallback').style.display='';
+  if(videoAdResolve){videoAdResolve();videoAdResolve=null;}
 }
 
 async function renderSlideToDataUrl(screenEntry,variation,framedImage){
@@ -942,8 +1148,10 @@ async function exportSelected(){
 
   document.getElementById('exportProgressLabel').textContent='Zipping...';
   const zipBlob=await zip.generateAsync({type:'blob'});
+  const appTitle=(document.getElementById('appTitleInput').value||'').trim();
+  const zipName=appTitle?appTitle.replace(/[^a-zA-Z0-9_\- ]/g,'').replace(/\s+/g,'-').toLowerCase()+'-mockups.zip':'mockups.zip';
   const link=document.createElement('a');
-  link.download='mockups.zip';
+  link.download=zipName;
   link.href=URL.createObjectURL(zipBlob);
   link.click();
   URL.revokeObjectURL(link.href);
@@ -973,7 +1181,13 @@ function loadProject(data){
     const p=typeof data==='string'?JSON.parse(data):data;
     if(p.globalCfg){
       Object.assign(globalCfg,p.globalCfg);
-      document.getElementById('globalFont').value=globalCfg.font;
+      // Update font dropdown
+      const matchFont=FONT_OPTIONS.find(f=>f.value===globalCfg.font);
+      if(matchFont){
+        document.getElementById('fontDropdownToggle').textContent=matchFont.label;
+        document.getElementById('fontDropdownToggle').style.fontFamily=matchFont.family;
+        document.getElementById('fontDropdownMenu').querySelectorAll('.font-dropdown-item').forEach(el=>{el.classList.toggle('active',el.dataset.value===globalCfg.font);});
+      }
       document.getElementById('globalTitleSize').value=globalCfg.titleSize;
       document.getElementById('globalSubSize').value=globalCfg.subtitleSize;
       document.getElementById('globalTitleColor').value=globalCfg.textColor;
@@ -1051,12 +1265,33 @@ function setupDropzone(){
   });
 }
 
+// ─── Font dropdown ───
+function initFontDropdown(){
+  const menu=document.getElementById('fontDropdownMenu');
+  const toggle=document.getElementById('fontDropdownToggle');
+  menu.innerHTML=FONT_OPTIONS.map((f,i)=>
+    `<div class="font-dropdown-item${i===0?' active':''}" data-value="${esc(f.value)}" data-label="${esc(f.label)}" style="font-family:${f.family};">${f.label}</div>`
+  ).join('');
+  toggle.addEventListener('click',e=>{e.stopPropagation();menu.classList.toggle('open');});
+  menu.addEventListener('click',e=>{
+    const item=e.target.closest('.font-dropdown-item');if(!item)return;
+    globalCfg.font=item.dataset.value;
+    toggle.textContent=item.dataset.label;
+    toggle.style.fontFamily=item.style.fontFamily;
+    menu.querySelectorAll('.font-dropdown-item').forEach(el=>el.classList.remove('active'));
+    item.classList.add('active');
+    menu.classList.remove('open');
+  });
+  document.addEventListener('click',()=>menu.classList.remove('open'));
+}
+
 // ─── Init ───
 loadTemplates();
 setupGlobalBgUpload();
 setupBulkUpload();
 setupProjectLoad();
 setupDropzone();
+initFontDropdown();
 renderScreenCards();
 updateFooter();
 

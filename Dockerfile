@@ -8,5 +8,6 @@ COPY favicon.svg /usr/share/nginx/html/
 COPY sitemap.xml /usr/share/nginx/html/
 COPY robots.txt /usr/share/nginx/html/
 COPY ads.txt /usr/share/nginx/html/
+COPY llms.txt /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
